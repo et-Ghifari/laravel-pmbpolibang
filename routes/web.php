@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome', ['type_menu' => '']);
 });
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('home', function () {
         //return abort(403);
         return view('apps.home', ['type_menu' => 'apps']);
@@ -28,6 +28,10 @@ Route::middleware(['auth'])->group(function(){
         return view('apps.blank', ['type_menu' => 'apps']);
     })->name('blank');
 });
+Route::get('password_link', function () {
+    //return abort(403);
+    return view('auths.password_link', ['type_menu' => 'auths']);
+})->name('password_link');
 
 //Route::get('/sign_in', function () {
 //    //return abort(403);

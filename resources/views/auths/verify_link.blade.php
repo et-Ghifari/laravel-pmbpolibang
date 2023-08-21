@@ -1,5 +1,5 @@
 @extends('layouts.auth')
-@section('title', 'Sign Link')
+@section('title', 'Verify Link')
 @push('class')
     class="fp-page"
 @endpush
@@ -9,15 +9,25 @@
             <a href="javascript:void(0);">Verification <b>Email</b></a>
             <small>Admin Laravel - Flutter</small>
         </div>
+        @if (session('status') == 'verification-link-sent')
+            <div class="alert bg-pink alert-dismissible" role="alert">
+                <center><b>Email verifikasi telah terkirim!</b></center>
+            </div>
+        @endif
         <div class="card">
             <div class="body">
                 <div class="thumbnail">
                     <img src="{{ asset('images/email_success.png') }}" class="img-responsive">
                 </div>
                 <center>
-                    <p>We have sent verification to your email,</p>
-                    <b>please check your email!</b>
+                    <p>Kami telah mengirimkan verifikasi ke email Anda,</p>
+                    <b>silahkan cek email anda!</b>
                 </center>
+                <br>
+                <form method="POST" action="{{ route('verification.send') }}">
+                    @csrf
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">KIRIM ULANG VERIFIKASI</button>
+                </form>
             </div>
         </div>
     </div>

@@ -1,25 +1,32 @@
 @extends('layouts.auth')
-@section('title', 'Confrmation Password')
+@section('title', 'Reset Password')
 @push('class')
     class="signup-page"
 @endpush
 @section('auth')
     <div class="signup-box">
         <div class="logo">
-            <a href="javascript:void(0);">Confirmation <b>Password</b></a>
-            <small>Admin Laravel - Flutter</small>
+            <a href="javascript:void(0);">Reset <b>Password</b></a>
+            <small>Admin PMB | POLIBANG</small>
         </div>
+        @error('password')
+            <div class="alert bg-red alert-dismissible" role="alert">
+                <center><b>Maaf confirmas password tidak sama!</b></center>
+            </div>
+        @enderror
         <div class="card">
             <div class="body">
-                <form id="sign_up" method="POST" action="{{ url('/sign_link') }}">
-                    <div class="msg">Confirmation new pasword</div>
+                <form id="sign_up" method="POST" action="{{ route('password.update') }}">
+                    @csrf
+                    <div class="msg">Konfirmasi password baru</div>
                     <div class="input-group">
+                        <input type="text" name="token" value="{{ $request->token }}" hidden>
                         <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
+                            <i class="material-icons">email</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="old_password" minlength="6"
-                                placeholder="Old Password" required>
+                            <input type="email" class="form-control" name="email" value="{{ $request->email }}"
+                                readonly>
                         </div>
                     </div>
                     <div class="input-group">
@@ -27,8 +34,11 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="new_password" minlength="6"
-                                placeholder="New Password" required>
+                            <input type="password"
+                                class="form-control @error('password')
+                                is-invalid
+                            @enderror"
+                                name="password" minlength="8" placeholder="Password" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -36,16 +46,11 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="confirm_password" minlength="6"
+                            <input type="password" class="form-control" name="password_confirmation" minlength="8"
                                 placeholder="Confirm Password" required>
                         </div>
                     </div>
-
-                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SAVE PASSWORD</button>
-
-                    <div class="m-t-25 m-b--5 align-center">
-                        <a href="{{ url('/sign_in') }}">Sign In your account</a>
-                    </div>
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIMPAN PASSWORD</button>
                 </form>
             </div>
         </div>

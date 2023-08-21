@@ -9,23 +9,28 @@
             <a href="javascript:void(0);">Buat-<b>Akun</b></a>
             <small>Admin PMB - POLIBANG</small>
         </div>
+        @error('email')
+            <div class="alert bg-red alert-dismissible" role="alert">
+                <center><b>Maaf email sudah digunakan!</b></center>
+            </div>
+        @enderror
+        @error('password')
+            <div class="alert bg-red alert-dismissible" role="alert">
+                <center><b>Maaf confirmas password tidak sama!</b></center>
+            </div>
+        @enderror
         <div class="card">
             <div class="body">
-                <form id="sign_up" method="POST" action="">
+                <form id="sign_up" method="POST">
                     @csrf
                     <div class="msg">Daftarkan akun baru</div>
-                    @error('email')
-                        <div class="alert bg-red alert-dismissible" role="alert">
-                            <center>Maaf email sudah digunakan!</center>
-                        </div>
-                    @enderror
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="fullname" placeholder="Nama Lengkap" required
-                                value="{{ old('fullname') }}" autofocus>
+                            <input type="text" class="form-control" name="name" placeholder="Nama Lengkap" required
+                                value="{{ old('name') }}" autofocus>
                         </div>
                     </div>
                     <div class="input-group">
@@ -35,7 +40,7 @@
                         <div class="form-line">
                             <input type="email"
                                 class="form-control @error('email')
-                                requared
+                                is-invalid
                             @enderror"
                                 name="email" placeholder="Email Address" required value="{{ old('email') }}">
                         </div>
@@ -45,8 +50,11 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" minlength="6"
-                                placeholder="Password" required>
+                            <input type="password"
+                                class="form-control @error('password')
+                                is-invalid
+                            @enderror"
+                                name="password" minlength="8" placeholder="Password" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -54,7 +62,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="confirm" minlength="6"
+                            <input type="password" class="form-control" name="password_confirmation" minlength="8"
                                 placeholder="Confirm Password" required>
                         </div>
                     </div>

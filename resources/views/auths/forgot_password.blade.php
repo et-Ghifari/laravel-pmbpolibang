@@ -9,9 +9,18 @@
             <a href="javascript:void(0);">Lupa-<b>Password</b></a>
             <small>Admin PMB - POLIBANG</small>
         </div>
+        @if (session('status'))
+            <meta http-equiv="Refresh" content="0; url='password_link'" />
+        @endif
+        @error('email')
+            <div class="alert bg-red alert-dismissible" role="alert">
+                <center><b>Maaf email tidak terdaftar!</b></center>
+            </div>
+        @enderror
         <div class="card">
             <div class="body">
-                <form id="forgot_password" action="{{ url('/password_link') }}">
+                <form id="forgot_password" method="POST" action="{{ route('password.email') }}">
+                    @csrf
                     <div class="msg">
                         Masukkan alamat email yang Anda gunakan untuk mendaftar. Kami akan mengirimkan email kepada Anda
                         tautan untuk mengatur ulang password Anda.
@@ -21,8 +30,11 @@
                             <i class="material-icons">email</i>
                         </span>
                         <div class="form-line">
-                            <input type="email" class="form-control" name="email" placeholder="Email" required
-                                autofocus>
+                            <input type="email"
+                                class="form-control @error('email')
+                                is-invalid
+                            @enderror"
+                                name="email" placeholder="Email" required autofocus>
                         </div>
                     </div>
 

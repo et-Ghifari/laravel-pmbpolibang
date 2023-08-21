@@ -9,22 +9,21 @@
             <a href="javascript:void(0);">Log-<b>In</b></a>
             <small>Admin PMB - POLIBANG</small>
         </div>
+        @error('email')
+            <div class="alert bg-red alert-dismissible" role="alert">
+                <center><b>Maaf email / password yang Anda masukan salah!</b></center>
+            </div>
+        @enderror
+        @error('password')
+            <div class="alert bg-red alert-dismissible" role="alert">
+                <center><b>Maaf email / password yang Anda masukan salah!</b></center>
+            </div>
+        @enderror
         <div class="card">
             <div class="body">
                 <form id="sign_in" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="msg">Masuk untuk memulai sesi Anda</div>
-                    @error('email')
-                        <div class="alert bg-red alert-dismissible" role="alert">
-                            <center>Maaf email / password yang Anda masukan salah!</center>
-                        </div>
-                    @enderror
-                    @error('password')
-                        <div class="alert bg-red alert-dismissible" role="alert">
-                            <center>Maaf email / password yang Anda masukan salah!</center>
-                        </div>
-                    @enderror
-
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">email</i>

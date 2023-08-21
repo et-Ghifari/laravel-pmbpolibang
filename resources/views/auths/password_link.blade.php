@@ -6,8 +6,8 @@
 @section('auth')
     <div class="fp-box">
         <div class="logo">
-            <a href="javascript:void(0);">Confirmation <b>Email</b></a>
-            <small>Admin Laravel - Flutter</small>
+            <a href="javascript:void(0);">Notifikasi <b>Email</b></a>
+            <small>Admin PMB | POLIBANG</small>
         </div>
         <div class="card">
             <div class="body">
@@ -15,8 +15,8 @@
                     <img src="{{ asset('images/email_success.png') }}" class="img-responsive">
                 </div>
                 <center>
-                    <p>We have sent confirmation to your email,</p>
-                    <b>please check your email!</b>
+                    <p>Kami telah mengirimkan notifikasi reset password ke email Anda,</p>
+                    <b>silahkan cek email anda!</b>
                 </center>
             </div>
         </div>
