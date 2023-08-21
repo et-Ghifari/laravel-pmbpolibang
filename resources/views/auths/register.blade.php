@@ -11,7 +11,7 @@
         </div>
         @error('email')
             <div class="alert bg-red alert-dismissible" role="alert">
-                <center><b>Maaf email sudah digunakan!</b></center>
+                {{<center><b>Maaf email sudah digunakan!</b></center>}}
             </div>
         @enderror
         @error('password')
