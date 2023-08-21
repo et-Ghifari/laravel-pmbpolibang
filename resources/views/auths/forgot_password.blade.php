@@ -6,15 +6,15 @@
 @section('auth')
     <div class="fp-box">
         <div class="logo">
-            <a href="javascript:void(0);">Forgot <b>Password</b></a>
-            <small>Admin Laravel - Flutter</small>
+            <a href="javascript:void(0);">Lupa-<b>Password</b></a>
+            <small>Admin PMB - POLIBANG</small>
         </div>
         <div class="card">
             <div class="body">
                 <form id="forgot_password" action="{{ url('/password_link') }}">
                     <div class="msg">
-                        Enter your email address that you used to register. We'll send you an email
-                        link to reset your password.
+                        Masukkan alamat email yang Anda gunakan untuk mendaftar. Kami akan mengirimkan email kepada Anda
+                        tautan untuk mengatur ulang password Anda.
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -26,10 +26,10 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">RESET MY PASSWORD</button>
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">ATUR ULANG PASSWORD</button>
 
                     <div class="row m-t-20 m-b--5 align-center">
-                        <a href="{{ url('/sign_in') }}">Sign In your account</a>
+                        <a href="{{ route('login') }}">Masuk dengan akun anda</a>
                     </div>
                 </form>
             </div>
