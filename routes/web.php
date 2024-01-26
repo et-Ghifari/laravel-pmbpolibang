@@ -20,16 +20,22 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('home', function () {
-        return abort(503);
-        //return view('apps.home', ['type_menu' => 'apps']);
+        //return abort(503);
+        return view('apps.home', ['type_menu' => 'apps']);
+
     })->name('home');
+    Route::get('user', function () {
+        //return abort(503);
+        return view('apps.user', ['type_menu' => 'apps']);
+
+    })->name('user');
     Route::get('blank', function () {
-        return abort(503);
-        //return view('apps.blank', ['type_menu' => 'apps']);
+        //return abort(503);
+        return view('apps.blank', ['type_menu' => 'apps']);
     })->name('blank');
 });
 Route::get('password_link', function () {
-    return view('auths.password_link', ['type_menu' => 'auths']);
+    return view('auth.password_link', ['type_menu' => 'auths']);
 })->name('password_link');
 
 //Route::get('/sign_in', function () {

@@ -44,23 +44,23 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::loginView(function(){
-            return view('auths.login');
+            return view('auth.login');
         });
 
         Fortify::registerView(function(){
-            return view('auths.register');
+            return view('auth.register');
         });
 
         Fortify::requestPasswordResetLinkView(function(){
-            return view('auths.forgot_password');
+            return view('auth.forgot_password');
         });
 
         Fortify::verifyEmailView(function(){
-            return view('auths.verify_link');
+            return view('auth.verify_link');
         });
 
         Fortify::resetPasswordView(function(Request $request){
-            return view('auths.reset_password', ['request' => $request]);
+            return view('auth.reset_password', ['request' => $request]);
         });
     }
 }
