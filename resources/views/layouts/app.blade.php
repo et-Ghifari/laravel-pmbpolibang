@@ -4,6 +4,7 @@
 <head>
     <title>@yield('title') &mdash; PMB | POLIBANG</title>
     @include('components.head')
+    @stack('style')
 </head>
 
 <body class="theme-cyan">
@@ -46,6 +47,7 @@
         @yield('content')
     </section>
     @include('components.foot')
+    @stack('scripts')
 </body>
 
 </html>

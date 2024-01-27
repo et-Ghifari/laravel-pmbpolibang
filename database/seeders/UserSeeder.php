@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name'=>'Amar Ghifari',
             'email'=>'superuser@gmail.com',
             'email_verified_at'=>now(),
-            'password'=>Hash::make('123456'),
+            'password'=>Hash::make('429637'),
         ]);
     }
 }

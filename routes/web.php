@@ -22,13 +22,43 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('home', function () {
         //return abort(503);
         return view('apps.home', ['type_menu' => 'apps']);
-
     })->name('home');
+    Route::get('profile', function () {
+        //return abort(503);
+        return view('apps.profile', ['type_menu' => 'apps']);
+    })->name('profile');
     Route::get('user', function () {
         //return abort(503);
-        return view('apps.user', ['type_menu' => 'apps']);
-
+        return view('apps.user.index', ['type_menu' => 'apps']);
     })->name('user');
+    Route::get('add-user', function () {
+        //return abort(503);
+        return view('apps.user.add-user', ['type_menu' => 'apps']);
+    })->name('add-user');
+    Route::get('registrant', function () {
+        //return abort(503);
+        return view('apps.registrant', ['type_menu' => 'apps']);
+    })->name('registrant');
+    Route::get('previous', function () {
+        //return abort(503);
+        return view('apps.previous', ['type_menu' => 'apps']);
+    })->name('previous');
+    Route::get('confirmation', function () {
+        //return abort(503);
+        return view('apps.confirmation', ['type_menu' => 'apps']);
+    })->name('confirmation');
+    Route::get('registration', function () {
+        //return abort(503);
+        return view('apps.registration', ['type_menu' => 'apps']);
+    })->name('registration');
+    Route::get('payment', function () {
+        //return abort(503);
+        return view('apps.payment', ['type_menu' => 'apps']);
+    })->name('payment');
+    Route::get('assignment', function () {
+        //return abort(503);
+        return view('apps.assignment', ['type_menu' => 'apps']);
+    })->name('assignment');
     Route::get('blank', function () {
         //return abort(503);
         return view('apps.blank', ['type_menu' => 'apps']);
