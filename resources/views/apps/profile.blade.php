@@ -47,18 +47,20 @@
                 <div class="card">
                     <div class="body">
                         <div>
-                            <ul class="nav nav-tabs active" role="tablist">
-                                <li role="presentation"><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Ganti Password</a></li>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Ganti Password</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="change_password_settings">
-                                    <form id="sign_up" action="" method="POST">
+                                    <form id="sign_up" action="{{ route('user-password.update') }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">lock</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="password" class="form-control" name="passwordOld" minlength="6" placeholder="Password Lama" required autofocus>
+                                                <input type="password" name="current_password" class="form-control" minlength="8" placeholder="Password Lama" required autofocus>
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -66,7 +68,7 @@
                                                 <i class="material-icons">lock</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="password" class="form-control" name="password" minlength="6" placeholder="Password Baru" required>
+                                                <input type="password" name="password" class="form-control" minlength="8" placeholder="Password Baru" required>
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -74,7 +76,7 @@
                                                 <i class="material-icons">lock</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="password" class="form-control" name="confirm" minlength="6" placeholder="Konfirmasi Password Baru" required>
+                                                <input type="password" name="password_confirmation" class="form-control" minlength="6" placeholder="Konfirmasi Password Baru" required>
                                             </div>
                                         </div>
                                         <div class="form-group align-center">
@@ -95,4 +97,6 @@
 @endsection\
 @push('scripts')
     <script src="{{ asset ('js/pages/examples/profile.js') }}"></script>
+    <script src="{{ asset ('plugins/bootstrap-notify/bootstrap-notify.js') }}"></script>
+    <script src="{{ asset ('js/pages/ui/notifications.js') }}"></script>
 @endpush

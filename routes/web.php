@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,52 +22,84 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('home', function () {
         //return abort(503);
-        return view('apps.home', ['type_menu' => 'apps']);
-    })->name('home');
+        return view('apps.home', ['type_menu' => '']);
+    })->name('home')->middleware('can:user');
+
     Route::get('profile', function () {
         //return abort(503);
-        return view('apps.profile', ['type_menu' => 'apps']);
-    })->name('profile');
+        return view('apps.profile', ['type_menu' => '']);
+    })->name('profile')->middleware('can:user');
+
     Route::get('user', function () {
         //return abort(503);
-        return view('apps.user.index', ['type_menu' => 'apps']);
-    })->name('user');
+        return view('apps.user.index', ['type_menu' => '']);
+    })->name('user')->middleware('can:admin');
+
     Route::get('add-user', function () {
         //return abort(503);
-        return view('apps.user.add-user', ['type_menu' => 'apps']);
-    })->name('add-user');
+        return view('apps.user.add-user', ['type_menu' => '']);
+    })->name('add-user')->middleware('can:super');
+
     Route::get('registrant', function () {
         //return abort(503);
-        return view('apps.registrant', ['type_menu' => 'apps']);
-    })->name('registrant');
+        return view('apps.registrant', ['type_menu' => '']);
+    })->name('registrant')->middleware('can:admin');
+
     Route::get('previous', function () {
         //return abort(503);
-        return view('apps.previous', ['type_menu' => 'apps']);
-    })->name('previous');
+        return view('apps.previous', ['type_menu' => '']);
+    })->name('previous')->middleware('can:admin');
+
     Route::get('confirmation', function () {
         //return abort(503);
-        return view('apps.confirmation', ['type_menu' => 'apps']);
-    })->name('confirmation');
+        return view('apps.confirmation', ['type_menu' => '']);
+    })->name('confirmation')->middleware('can:admin');
+
     Route::get('registration', function () {
         //return abort(503);
-        return view('apps.registration', ['type_menu' => 'apps']);
-    })->name('registration');
+        return view('apps.registration.index', ['type_menu' => '']);
+    })->name('registration')->middleware('can:user');
+    Route::get('scholarship', function () {
+        //return abort(503);
+        return view('apps.registration.scholarship', ['type_menu' => '']);
+    })->name('registration')->middleware('can:user');
+    Route::get('scholarship', function () {
+        //return abort(503);
+        return view('apps.registration.scholarship', ['type_menu' => '']);
+    })->name('scholarship')->middleware('can:user');
+    Route::get('independent', function () {
+        //return abort(503);
+        return view('apps.registration.independent', ['type_menu' => 'apps']);
+    })->name('independent')->middleware('can:user');
+    Route::get('ass-registration', function () {
+        //return abort(503);
+        return view('apps.registration.ass-registration', ['type_menu' => 'apps']);
+    })->name('ass-registration')->middleware('can:user');
+    Route::get('edit-registration', function () {
+        //return abort(503);
+        return view('apps.registration.edit-registration', ['type_menu' => 'apps']);
+    })->name('edit-registration')->middleware('can:user');
+
     Route::get('payment', function () {
         //return abort(503);
         return view('apps.payment', ['type_menu' => 'apps']);
-    })->name('payment');
+    })->name('payment')->middleware('can:user');
+
     Route::get('assignment', function () {
         //return abort(503);
         return view('apps.assignment', ['type_menu' => 'apps']);
-    })->name('assignment');
+    })->name('assignment')->middleware('can:user');
+
     Route::get('blank', function () {
         //return abort(503);
         return view('apps.blank', ['type_menu' => 'apps']);
     })->name('blank');
+
+    Route::resource('user', UserController::class)->middleware('can:admin');
 });
 Route::get('password_link', function () {
     return view('auth.password_link', ['type_menu' => 'auths']);
-})->name('password_link');
+})->name('password_link')->middleware('can:user');
 
 //Route::get('/sign_in', function () {
 //    //return abort(403);

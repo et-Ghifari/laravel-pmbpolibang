@@ -61,7 +61,7 @@
                     <span>Konfirmasi Pembayaran</span>
                 </a>
             </li>
-            <li class="{{ Request::is('registration') ? 'active' : '' }}">
+            <li class="{{ Request::is('registration') ? 'active' : '' }} || {{ Request::is('independent') ? 'active' : ''}} || {{ Request::is('scholarship') ? 'active' : ''}} || {{ Request::is('edit-registration') ? 'active' : ''}} || {{ Request::is('ass-registration') ? 'active' : ''}}">
                 <a href="{{ url('registration') }}">
                     <i class="material-icons">assignment</i>
                     <span>Formulir Pendaftaran</span>

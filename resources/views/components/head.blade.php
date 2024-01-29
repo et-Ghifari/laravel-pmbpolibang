@@ -18,6 +18,9 @@
 <!-- Animation Css -->
 <link href="{{ asset('plugins/animate-css/animate.css') }}" rel="stylesheet" />
 
+<!-- Bootstrap Select Css -->
+<link href="{{ asset ('plugins/bootstrap-select/css/bootstrap-select.css') }}" rel="stylesheet" />
+
 <!-- Custom Css -->
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 

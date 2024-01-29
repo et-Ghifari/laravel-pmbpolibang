@@ -19,10 +19,14 @@
                             <div class="col-xs-12 col-sm-6 align-right">
                                 <div class="switch panel-switch-btn">
                                     <a type="button" href="{{ url ('user') }}" class="btn btn-default waves-effect" data-toggle="tooltip" data-placement="bottom" title="Perbarui"><i class="material-icons">refresh</i></a>
-                                    <a href="{{ url ('add-user') }}" class="btn bg-green waves-effect">
-                                        <i class="material-icons">add_circle_outline</i>
-                                        <span>TAMBAH</span>
-                                    </a>
+                                    @auth
+                                        @if (auth()->user()->role == 'superuser')
+                                            <a href="{{ url ('add-user') }}" class="btn bg-green waves-effect">
+                                                <i class="material-icons">add_circle_outline</i>
+                                                <span>TAMBAH</span>
+                                            </a>
+                                        @endif
+                                    @endauth
                                 </div>
                             </div>
                         </div>
@@ -32,42 +36,34 @@
                             <table class="table table-bordered table-striped table-hover js-basic-example">
                                 <thead>
                                     <tr>
+                                        <th class="col-sm-1 align-center">NO</th>
                                         <th class="col-sm-3 ">NAMA LENGKAP</th>
-                                        <th class="col-sm-3 ">ALAMAT EMAIL</th>
-                                        <th class="col-sm-2 ">TELEPHONE</th>
+                                        <th class="col-sm-3 ">EMAIL</th>
                                         <th class="col-sm-1 align-center"><i class="material-icons">verified_user</i></th>
-                                        <th class="col-sm-2 align-center"><i class="material-icons">settings</i></th>
+                                        <th class="col-sm-1 align-center"><i class="material-icons">settings</i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($users as $index=>$user)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
                                         <td class="align-center">
-
-                                            <span class="badge bg-orange"><h6>Pending</h2></span>
-
+                                            {{ $index + $users->firstItem() }}
+                                        </td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td class="align-center">
+                                            @if ($user->email_verified_at != null)
+                                                <span class="badge bg-green"><h6>Active</h2></span>
+                                            @else
+                                                <span class="badge bg-orange"><h6>Pending</h2></span>
+                                            @endif
                                         </td>
                                         <td class="align-center">
                                             <a href="" class="btn bg-cyan waves-effect" title="Edit User"><i class="material-icons">edit</i></a>
                                             <a href="" class="btn btn-danger waves-effect" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" title="Hapus User"><i class="material-icons">delete_forever</i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="align-center">
-
-                                            <span class="badge bg-green"><h6>Active</h2></span>
-
-                                        </td>
-                                        <td class="align-center">
-                                            <a href="" class="btn bg-cyan waves-effect" title="Edit User"><i class="material-icons">edit</i></a>
-                                            <a href="" class="btn btn-danger waves-effect" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" title="Hapus User"><i class="material-icons">delete_forever</i></a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

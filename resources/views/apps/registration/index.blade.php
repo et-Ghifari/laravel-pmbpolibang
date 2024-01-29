@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Pendaftaran')
+
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
@@ -22,7 +23,7 @@
                                     <div class="caption">
                                         <h3>Mandiri</h3>
                                         <p>
-                                            <a href="https://pmb.polibang.ac.id/form/formMandiri.php" class="btn bg-cyan waves-effect" role="button"><strong>DAFTAR</strong></a>
+                                            <a href="{{ url ('independent') }}" class="btn bg-cyan waves-effect" role="button"><strong>DAFTAR</strong></a>
                                         </p>
                                     </div>
                                 </div>
@@ -33,7 +34,7 @@
                                     <div class="caption">
                                         <h3>Beasiswa</h3>
                                         <p>
-                                            <a href="https://pmb.polibang.ac.id/form/formBeasiswa.php" class="btn bg-cyan waves-effect" role="button"><strong>DAFTAR</strong></a>
+                                            <a href="{{ url ('scholarship') }}" class="btn bg-cyan waves-effect" role="button"><strong>DAFTAR</strong></a>
                                         </p>
                                     </div>
                                 </div>

@@ -125,8 +125,6 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="{{ asset ('js/pages/index.js') }}"></script>
-    <script src="{{ asset ('plugins/jquery-countto/jquery.countTo.js') }}"></script>
     <script src="{{ asset ('plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
     <script src="{{ asset ('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset ('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
