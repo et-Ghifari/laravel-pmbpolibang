@@ -90,6 +90,35 @@ Route::middleware(['auth', 'verified'])->group(function(){
         return view('apps.assignment', ['type_menu' => 'apps']);
     })->name('assignment')->middleware('can:user');
 
+    Route::get('sliding', function () {
+        //return abort(503);
+        return view('apps.interface.sliding-image', ['type_menu' => 'apps']);
+    })->name('sliding')->middleware('can:admin');
+    Route::get('visi', function () {
+        //return abort(503);
+        return view('apps.interface.visi-misi', ['type_menu' => 'apps']);
+    })->name('visi')->middleware('can:admin');
+    Route::get('panduan', function () {
+        //return abort(503);
+        return view('apps.interface.panduan', ['type_menu' => 'apps']);
+    })->name('panduan')->middleware('can:admin');
+    Route::get('beasiswa', function () {
+        //return abort(503);
+        return view('apps.interface.beasiswa', ['type_menu' => 'apps']);
+    })->name('beasiswa')->middleware('can:admin');
+    Route::get('prodi', function () {
+        //return abort(503);
+        return view('apps.interface.prodi', ['type_menu' => 'apps']);
+    })->name('prodi')->middleware('can:admin');
+    Route::get('fasilitas', function () {
+        //return abort(503);
+        return view('apps.interface.fasilitas', ['type_menu' => 'apps']);
+    })->name('fasilitas')->middleware('can:admin');
+    Route::get('testimoni', function () {
+        //return abort(503);
+        return view('apps.interface.testimoni', ['type_menu' => 'apps']);
+    })->name('testimoni')->middleware('can:admin');
+
     Route::get('blank', function () {
         //return abort(503);
         return view('apps.blank', ['type_menu' => 'apps']);

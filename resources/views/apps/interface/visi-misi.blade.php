@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Terdahulu')
+@section('title', 'Visi')
 @push('style')
     <link href="{{ asset ('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>DATA PENDAFTAR TERDAHULU</h2>
+            <h2>DATA VISI MISI</h2>
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -14,7 +14,7 @@
                     <div class="header">
                         <div class="row clearfix">
                             <div class="col-xs-12 col-sm-6">
-                                <h2>Data Calon Mahasiswa Terdahulu</h2>
+                                <h2>Data Visi Misi</h2>
                             </div>
                             <div class="col-xs-12 col-sm-6 align-right">
                                 <div class="switch panel-switch-btn">

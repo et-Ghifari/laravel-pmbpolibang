@@ -31,7 +31,7 @@
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
             <li class="{{ Request::is('home') ? 'active' : '' }}">
-                <a href="{{ url('home') }}">
+                <a href="{{ route ('home') }}">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
@@ -39,25 +39,25 @@
             <li class="header"></li>
             @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
                 <li class="{{ Request::is('user') ? 'active' : ''}} || {{ Request::is('add-user') ? 'active' : ''}}">
-                    <a href="{{ url('user') }}">
+                    <a href="{{ route ('user.index') }}">
                         <i class="material-icons">person</i>
                         <span>Akun Pengguna</span>
                     </a>
                 </li>
                 <li class="{{ Request::is('registrant') ? 'active' : '' }}">
-                    <a href="{{ url('registrant') }}">
+                    <a href="{{ route ('registrant') }}">
                         <i class="material-icons">people</i>
                         <span>Data Pendaftar</span>
                     </a>
                 </li>
                 <li class="{{ Request::is('previous') ? 'active' : '' }}">
-                    <a href="{{ url('previous') }}">
+                    <a href="{{ route ('previous') }}">
                         <i class="material-icons">folder_shared</i>
                         <span>Pendaftar Terdahulu</span>
                     </a>
                 </li>
                 <li class="{{ Request::is('confirmation') ? 'active' : '' }}">
-                    <a href="{{ url('confirmation') }}">
+                    <a href="{{ route ('confirmation') }}">
                         <i class="material-icons">confirmation_number</i>
                         <span>Konfirmasi Pembayaran</span>
                     </a>
@@ -65,13 +65,13 @@
             @endif
             @if (auth()->user()->role=='user')
                 <li class="{{ Request::is('registration') ? 'active' : '' }} || {{ Request::is('independent') ? 'active' : ''}} || {{ Request::is('scholarship') ? 'active' : ''}} || {{ Request::is('edit-registration') ? 'active' : ''}} || {{ Request::is('ass-registration') ? 'active' : ''}}">
-                    <a href="{{ url('registration') }}">
+                    <a href="{{ route ('registration') }}">
                         <i class="material-icons">assignment</i>
                         <span>Formulir Pendaftaran</span>
                     </a>
                 </li>
                 <li class="{{ Request::is('payment') ? 'active' : '' }}">
-                    <a href="{{ url('payment') }}">
+                    <a href="{{ route ('payment') }}">
                         <i class="material-icons">monetization_on</i>
                         <span>Bukti Pembayaran</span>
                     </a>
@@ -79,32 +79,32 @@
             @endif
             <li class="header"></li>
             @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
-                <li>
+                <li class="{{ $type_menu == 'apps' ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">view_compact</i>
                         <span>Manajemen Tampilan</span>
                     </a>
                     <ul class="ml-menu">
-                        <li>
-                            <a href="">Sliding Image</a>
+                        <li class="{{ Request::is('sliding') ? 'active' : '' }}">
+                            <a href="{{ route ('sliding') }}">Sliding Image</a>
                         </li>
-                        <li>
-                            <a href="">Visi Misi</a>
+                        <li class="{{ Request::is('visi') ? 'active' : '' }}">
+                            <a href="{{ route ('visi') }}">Visi Misi</a>
                         </li>
-                        <li>
-                            <a href="">Panduan</a>
+                        <li class="{{ Request::is('panduan') ? 'active' : '' }}">
+                            <a href="{{ route ('panduan') }}">Panduan</a>
                         </li>
-                        <li>
-                            <a href="">Beasiswa</a>
+                        <li class="{{ Request::is('beasiswa') ? 'active' : '' }}">
+                            <a href="{{ route ('beasiswa') }}">Beasiswa</a>
                         </li>
-                        <li>
-                            <a href="">Prodi</a>
+                        <li class="{{ Request::is('prodi') ? 'active' : '' }}">
+                            <a href="{{ route ('prodi') }}">Prodi</a>
                         </li>
-                        <li>
-                            <a href="">Fasilitas</a>
+                        <li class="{{ Request::is('fasilitas') ? 'active' : '' }}">
+                            <a href="{{ route ('fasilitas') }}">Fasilitas</a>
                         </li>
-                        <li>
-                            <a href="">Testimoni</a>
+                        <li class="{{ Request::is('testimoni') ? 'active' : '' }}">
+                            <a href="{{ route ('testimoni') }}">Testimoni</a>
                         </li>
                     </ul>
                 </li>
@@ -124,7 +124,7 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; 2023 <a href="{{ url('') }}">Admin Laravel - Flutter</a>.
+            &copy; 2023 <a href="{{ url ('') }}">Admin Laravel - Flutter</a>.
         </div>
         <div class="version">
             <b>Version: </b> 1.0.0

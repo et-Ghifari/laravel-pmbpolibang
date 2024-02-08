@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Penadftar')
+@section('title', 'Pendaftar')
 @push('style')
     <link href="{{ asset ('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 @endpush
