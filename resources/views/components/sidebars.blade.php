@@ -79,7 +79,7 @@
             @endif
             <li class="header"></li>
             @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
-                <li class="{{ $type_menu == 'interface' ? 'active' : '' }}">
+                <li class="">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">view_compact</i>
                         <span>Manajemen Tampilan</span>

@@ -14,6 +14,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $users = DB::table('users')->paginate();
+        $type_menu = '';
         return view('apps.user.index', compact('users'));
     }
 

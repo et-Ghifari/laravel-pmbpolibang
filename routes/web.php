@@ -42,17 +42,17 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::get('registrant', function () {
         //return abort(503);
-        return view('apps.registrant', ['type_menu' => '']);
+        return view('apps.registrant.index', ['type_menu' => '']);
     })->name('registrant')->middleware('can:admin');
 
     Route::get('previous', function () {
         //return abort(503);
-        return view('apps.previous', ['type_menu' => '']);
+        return view('apps.previous.index', ['type_menu' => '']);
     })->name('previous')->middleware('can:admin');
 
     Route::get('confirmation', function () {
         //return abort(503);
-        return view('apps.confirmation', ['type_menu' => '']);
+        return view('apps.confirmation.index', ['type_menu' => '']);
     })->name('confirmation')->middleware('can:admin');
 
     Route::get('registration', function () {
@@ -69,59 +69,59 @@ Route::middleware(['auth', 'verified'])->group(function(){
     })->name('scholarship')->middleware('can:user');
     Route::get('independent', function () {
         //return abort(503);
-        return view('apps.registration.independent', ['type_menu' => 'apps']);
+        return view('apps.registration.independent', ['type_menu' => '']);
     })->name('independent')->middleware('can:user');
     Route::get('ass-registration', function () {
         //return abort(503);
-        return view('apps.registration.ass-registration', ['type_menu' => 'apps']);
+        return view('apps.registration.ass-registration', ['type_menu' => '']);
     })->name('ass-registration')->middleware('can:user');
     Route::get('edit-registration', function () {
         //return abort(503);
-        return view('apps.registration.edit-registration', ['type_menu' => 'apps']);
+        return view('apps.registration.edit-registration', ['type_menu' => '']);
     })->name('edit-registration')->middleware('can:user');
 
     Route::get('payment', function () {
         //return abort(503);
-        return view('apps.payment', ['type_menu' => 'apps']);
+        return view('apps.payment', ['type_menu' => '']);
     })->name('payment')->middleware('can:user');
 
     Route::get('assignment', function () {
         //return abort(503);
-        return view('apps.assignment', ['type_menu' => 'apps']);
+        return view('apps.assignment', ['type_menu' => '']);
     })->name('assignment')->middleware('can:user');
 
     Route::get('sliding', function () {
         //return abort(503);
-        return view('apps.interface.sliding-image', ['type_menu' => 'apps']);
+        return view('apps.sliding-image.index', ['type_menu' => 'interface']);
     })->name('sliding')->middleware('can:admin');
     Route::get('visi', function () {
         //return abort(503);
-        return view('apps.interface.visi-misi', ['type_menu' => 'apps']);
+        return view('apps.visi-misi.index', ['type_menu' => 'interface']);
     })->name('visi')->middleware('can:admin');
     Route::get('panduan', function () {
         //return abort(503);
-        return view('apps.interface.panduan', ['type_menu' => 'apps']);
+        return view('apps.panduan.index', ['type_menu' => 'interface']);
     })->name('panduan')->middleware('can:admin');
     Route::get('beasiswa', function () {
         //return abort(503);
-        return view('apps.interface.beasiswa', ['type_menu' => 'apps']);
+        return view('apps.beasiswa.index', ['type_menu' => 'interface']);
     })->name('beasiswa')->middleware('can:admin');
     Route::get('prodi', function () {
         //return abort(503);
-        return view('apps.interface.prodi', ['type_menu' => 'apps']);
+        return view('apps.prodi.index', ['type_menu' => 'interface']);
     })->name('prodi')->middleware('can:admin');
     Route::get('fasilitas', function () {
         //return abort(503);
-        return view('apps.interface.fasilitas', ['type_menu' => 'apps']);
+        return view('apps.fasilitas.index', ['type_menu' => 'interface']);
     })->name('fasilitas')->middleware('can:admin');
     Route::get('testimoni', function () {
         //return abort(503);
-        return view('apps.interface.testimoni', ['type_menu' => 'apps']);
+        return view('apps.testimoni.index', ['type_menu' => 'interface']);
     })->name('testimoni')->middleware('can:admin');
 
     Route::get('blank', function () {
         //return abort(503);
-        return view('apps.blank', ['type_menu' => 'apps']);
+        return view('apps.blank', ['type_menu' => '']);
     })->name('blank');
 
     Route::resource('user', UserController::class)->middleware('can:admin');
