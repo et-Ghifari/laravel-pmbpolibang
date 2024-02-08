@@ -17,7 +17,8 @@ class AuthServiceProvider extends ServiceProvider
         //
     ];
     public static $permission = [
-        'user' => ['superuser', 'admin', 'user'],
+        'user' => ['user'],
+        'all' => ['superuser', 'admin', 'user'],
         'admin' => ['superuser', 'admin'],
         'super' => ['superuser'],
     ];

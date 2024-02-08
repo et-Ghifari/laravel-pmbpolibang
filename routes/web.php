@@ -23,12 +23,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('home', function () {
         //return abort(503);
         return view('apps.home', ['type_menu' => '']);
-    })->name('home')->middleware('can:user');
+    })->name('home')->middleware('can:all');
 
     Route::get('profile', function () {
         //return abort(503);
         return view('apps.profile', ['type_menu' => '']);
-    })->name('profile')->middleware('can:user');
+    })->name('profile')->middleware('can:all');
 
     Route::get('user', function () {
         //return abort(503);
@@ -99,7 +99,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
 });
 Route::get('password_link', function () {
     return view('auth.password_link', ['type_menu' => 'auths']);
-})->name('password_link')->middleware('can:user');
+})->name('password_link')->middleware('can:all');
 
 //Route::get('/sign_in', function () {
 //    //return abort(403);

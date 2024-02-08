@@ -11,9 +11,9 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate();
+        $users = DB::table('users')->paginate();
         return view('apps.user.index', compact('users'));
     }
 

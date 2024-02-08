@@ -19,14 +19,12 @@
                             <div class="col-xs-12 col-sm-6 align-right">
                                 <div class="switch panel-switch-btn">
                                     <a type="button" href="{{ url ('user') }}" class="btn btn-default waves-effect" data-toggle="tooltip" data-placement="bottom" title="Perbarui"><i class="material-icons">refresh</i></a>
-                                    @auth
-                                        @if (auth()->user()->role == 'superuser')
-                                            <a href="{{ url ('add-user') }}" class="btn bg-green waves-effect">
-                                                <i class="material-icons">add_circle_outline</i>
-                                                <span>TAMBAH</span>
-                                            </a>
-                                        @endif
-                                    @endauth
+                                    @if (auth()->user()->role == 'superuser')
+                                        <a href="{{ url ('add-user') }}" class="btn bg-green waves-effect">
+                                            <i class="material-icons">add_circle_outline</i>
+                                            <span>TAMBAH</span>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -60,7 +58,9 @@
                                         </td>
                                         <td class="align-center">
                                             <a href="" class="btn bg-cyan waves-effect" title="Edit User"><i class="material-icons">edit</i></a>
-                                            <a href="" class="btn btn-danger waves-effect" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" title="Hapus User"><i class="material-icons">delete_forever</i></a>
+                                            @if (auth()->user()->role == 'superuser')
+                                                <a href="" class="btn btn-danger waves-effect" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" title="Hapus User"><i class="material-icons">delete_forever</i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
