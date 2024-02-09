@@ -20,7 +20,7 @@
                                 <div class="switch panel-switch-btn">
                                     <a type="button" href="{{ url ('user') }}" class="btn btn-default waves-effect" data-toggle="tooltip" data-placement="bottom" title="Perbarui"><i class="material-icons">refresh</i></a>
                                     @if (auth()->user()->role == 'superuser')
-                                        <a href="{{ url ('add-user') }}" class="btn bg-green waves-effect">
+                                        <a href="{{ route ('add-user') }}" class="btn bg-green waves-effect">
                                             <i class="material-icons">add_circle_outline</i>
                                             <span>TAMBAH</span>
                                         </a>
@@ -30,6 +30,11 @@
                         </div>
                     </div>
                     <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                @include('layouts.alert')
+                            </div>
+                        </div>
                         <div class="table">
                             <table class="table table-bordered table-striped table-hover js-basic-example">
                                 <thead>

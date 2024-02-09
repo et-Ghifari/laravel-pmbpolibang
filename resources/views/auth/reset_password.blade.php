@@ -11,7 +11,7 @@
         </div>
         @error('password')
             <div class="alert bg-red alert-dismissible" role="alert">
-                <center><b>Maaf confirmas password tidak sama!</b></center>
+                <center><b>Maaf Konfirmasi Password Tidak Sama</b></center>
             </div>
         @enderror
         <div class="card">

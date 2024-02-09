@@ -127,8 +127,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('user', UserController::class)->middleware('can:admin');
 });
 Route::get('password_link', function () {
-    return view('auth.password_link', ['type_menu' => 'auths']);
-})->name('password_link')->middleware('can:all');
+    return view('auth.password_link', ['type_menu' => '']);
+})->name('password_link')->middleware('can:user');
 
 //Route::get('/sign_in', function () {
 //    //return abort(403);

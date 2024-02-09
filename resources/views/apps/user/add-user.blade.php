@@ -29,7 +29,8 @@
                         </ul>
                     </div>
                     <div class="body">
-                        <form id="form_validation" method="POST">
+                        <form id="form_validation" method="POST" action="{{ route ('user.store') }}">
+                            @csrf
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="text" class="form-control" name="name" required>

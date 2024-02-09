@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +15,6 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $users = DB::table('users')->paginate();
-        $type_menu = '';
         return view('apps.user.index', compact('users'));
     }
 
@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('apps.user.add-user');
     }
 
     /**
@@ -31,7 +31,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name'=>$request['name'],
+            'email'=>$request['email'],
+            'email_verified_at'=>now(),
+            'role'=>$request['role'],
+            'password'=>Hash::make($request['password']),
+        ]);
+
+        return redirect(route('user.index'))->with('success', 'User berhasil di tambahkan!');
     }
 
     /**

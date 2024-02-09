@@ -39,6 +39,7 @@
         </div>
     </div>
     <!-- #END# Search Bar -->
+    @include('sweetalert::alert')
     @include('components.topbar')
     <section>
         @include('components.sidebars')
