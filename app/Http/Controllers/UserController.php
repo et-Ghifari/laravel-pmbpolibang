@@ -38,8 +38,7 @@ class UserController extends Controller
             'role'=>$request['role'],
             'password'=>Hash::make($request['password']),
         ]);
-
-        return redirect(route('user.index'))->with('success', 'User berhasil di tambahkan!');
+        return redirect(route('user.index'))->with('success', 'Akun Pengguna berhasil di Tambahkan!');
     }
 
     /**
@@ -55,7 +54,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('apps.user.adit-user')->with('user', $user);
     }
 
     /**
@@ -63,7 +62,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+            'name'=>$request['name'],
+            'email'=>$request['email'],
+            'email_verified_at'=>now(),
+            'role'=>$request['role'],
+            'password'=>Hash::make($request['password']),
+        ]);
+        return redirect(route('user.index'))->with('success', 'Akun Pengguna berhasil di Ubah!');
     }
 
     /**
@@ -71,6 +77,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect(route('user.index'))->with('success', 'Akun Pengguna berhasil di Hapus!');
     }
 }

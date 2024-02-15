@@ -10,6 +10,9 @@
 <!-- Slimscroll Plugin Js -->
 <script src="{{ asset('plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 
+<!-- Bootstrap Notify Plugin Js -->
+<script src="{{ asset ('plugins/bootstrap-notify/bootstrap-notify.js') }}"></script>
+
 <!-- Waves Effect Plugin Js -->
 <script src="{{ asset('plugins/node-waves/waves.js') }}"></script>
 

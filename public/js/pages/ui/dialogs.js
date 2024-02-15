@@ -48,16 +48,17 @@ function showSuccessMessage() {
 }
 
 function showConfirmMessage() {
+    var link = $(this).attr("href");
     swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
+        title: "Apakan Anda Yakin?",
+        text: "Ingin Menghapus Data Ini!",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Iya, Hapus Data!",
         closeOnConfirm: false
     }, function () {
-        swal("Deleted!", "Your imaginary file has been deleted.", "success");
+        swal("Terhapus!", "Data Berhasil Dihapus.", "success");
     });
 }
 

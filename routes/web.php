@@ -33,12 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('user', function () {
         //return abort(503);
         return view('apps.user.index', ['type_menu' => '']);
-    })->name('user')->middleware('can:admin');
-
-    Route::get('add-user', function () {
-        //return abort(503);
-        return view('apps.user.add-user', ['type_menu' => '']);
-    })->name('add-user')->middleware('can:super');
+    })->name('user')->middleware('can:super');
 
     Route::get('registrant', function () {
         //return abort(503);
@@ -124,7 +119,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
         return view('apps.blank', ['type_menu' => '']);
     })->name('blank');
 
-    Route::resource('user', UserController::class)->middleware('can:admin');
+    Route::resource('user', UserController::class)->middleware('can:super');
 });
 Route::get('password_link', function () {
     return view('auth.password_link', ['type_menu' => '']);

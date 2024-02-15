@@ -19,12 +19,10 @@
                             <div class="col-xs-12 col-sm-6 align-right">
                                 <div class="switch panel-switch-btn">
                                     <a type="button" href="{{ url ('user') }}" class="btn btn-default waves-effect" data-toggle="tooltip" data-placement="bottom" title="Perbarui"><i class="material-icons">refresh</i></a>
-                                    @if (auth()->user()->role == 'superuser')
-                                        <a href="{{ route ('add-user') }}" class="btn bg-green waves-effect">
-                                            <i class="material-icons">add_circle_outline</i>
-                                            <span>TAMBAH</span>
-                                        </a>
-                                    @endif
+                                    <a href="{{ route ('user.create') }}" class="btn bg-green waves-effect">
+                                        <i class="material-icons">add_circle_outline</i>
+                                        <span>TAMBAH</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -40,8 +38,8 @@
                                 <thead>
                                     <tr>
                                         <th class="col-sm-1 align-center">NO</th>
-                                        <th class="col-sm-3 ">NAMA LENGKAP</th>
-                                        <th class="col-sm-3 ">EMAIL</th>
+                                        <th class="col-sm-4 ">NAMA LENGKAP</th>
+                                        <th class="col-sm-4 ">EMAIL</th>
                                         <th class="col-sm-1 align-center"><i class="material-icons">verified_user</i></th>
                                         <th class="col-sm-1 align-center"><i class="material-icons">settings</i></th>
                                     </tr>
@@ -49,23 +47,26 @@
                                 <tbody>
                                     @foreach ($users as $index=>$user)
                                     <tr>
-                                        <td class="align-center">
+                                        <td class="col-sm-1 align-center">
                                             {{ $index + $users->firstItem() }}
                                         </td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td class="align-center">
+                                        <td class="col-sm-4 ">{{ $user->name }}</td>
+                                        <td class="col-sm-4 ">{{ $user->email }}</td>
+                                        <td class="col-sm-1 align-center">
                                             @if ($user->email_verified_at != null)
                                                 <span class="badge bg-green"><h6>Active</h2></span>
                                             @else
                                                 <span class="badge bg-orange"><h6>Pending</h2></span>
                                             @endif
                                         </td>
-                                        <td class="align-center">
-                                            <a href="" class="btn bg-cyan waves-effect" title="Edit User"><i class="material-icons">edit</i></a>
-                                            @if (auth()->user()->role == 'superuser')
-                                                <a href="" class="btn btn-danger waves-effect" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" title="Hapus User"><i class="material-icons">delete_forever</i></a>
-                                            @endif
+                                        <td class="col-sm-1 align-center">
+                                            <a href="{{ route ('user.edit', $user->id) }}" class="btn bg-cyan waves-effect" title="Edit User"><i class="material-icons">edit</i></a>
+                                            <form action="{{ route ('user.destroy', $user->id) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <button class="btn btn-danger waves-effect" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" title="Hapus User"><i class="material-icons">delete_forever</i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -89,4 +90,6 @@
     <script src="{{ asset ('plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
     <script src="{{ asset ('plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
     <script src="{{ asset ('js/pages/tables/jquery-datatable.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset ('js/sweet.js') }}"></script>
 @endpush

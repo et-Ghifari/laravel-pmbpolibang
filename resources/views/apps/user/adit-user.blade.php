@@ -13,30 +13,31 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Tambah Akun Pengguna
+                            Ubah Akun Pengguna
                         </h2>
                     </div>
                     <div class="body">
-                        <form id="form_validation" method="POST" action="{{ route ('user.store') }}">
+                        <form id="form_validation" method="POST" action="{{ route ('user.update', $user) }}">
                             @csrf
+                            @method('PUT')
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="name" required>
+                                    <input type="text" class="form-control" name="name" value="{{ $user->name }}" required>
                                     <label class="form-label">Nama Lengkap</label>
                                 </div>
                             </div>
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="email" class="form-control" name="email" required>
+                                    <input type="email" class="form-control" name="email" value="{{ $user->email }}" required>
                                     <label class="form-label">Alamat Email</label>
                                 </div>
                             </div>
                             <div class="demo-radio-button">
-                                <input name="role" type="radio" id="superuser" value="superuser" required/>
+                                <input name="role" type="radio" id="superuser" value="superuser" {{ ($user->role=='superuser') ? "checked" : "" }} required/>
                                 <label for="superuser">Super User</label>
-                                <input name="role" type="radio" id="admin" value="admin" required/>
+                                <input name="role" type="radio" id="admin" value="admin" {{ ($user->role=='admin') ? "checked" : "" }} required/>
                                 <label for="admin">Admin</label>
-                                <input name="role" type="radio" id="user" value="user" required/>
+                                <input name="role" type="radio" id="user" value="user" {{ ($user->role=='user') ? "checked" : "" }} required/>
                                 <label for="user">Pengguna</label>
                             </div>
                             <div class="form-group form-float">
@@ -47,8 +48,8 @@
                             </div>
                             <div class="align-center">
                                 <button type="submit" class="btn bg-green m-t-15 waves-effect" name="edit">
-                                    <i class="material-icons">add_circle_outline</i>
-                                    <span>TAMBAH</span>
+                                    <i class="material-icons">save</i>
+                                    <span>SIMPAN</span>
                                 </button>
                                 <a type="button" href="{{ url ('user') }}" class="btn bg-orange m-t-15 waves-effect" name="edit">
                                     <i class="material-icons">backspace</i>

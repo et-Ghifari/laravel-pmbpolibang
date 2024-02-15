@@ -37,13 +37,15 @@
                 </a>
             </li>
             <li class="header"></li>
-            @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
+            @if (auth()->user()->role=='superuser')
                 <li class="{{ Request::is('user') ? 'active' : ''}} || {{ Request::is('add-user') ? 'active' : ''}}">
                     <a href="{{ route ('user.index') }}">
                         <i class="material-icons">person</i>
                         <span>Akun Pengguna</span>
                     </a>
                 </li>
+            @endif
+            @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
                 <li class="{{ Request::is('registrant') ? 'active' : '' }}">
                     <a href="{{ route ('registrant') }}">
                         <i class="material-icons">people</i>
