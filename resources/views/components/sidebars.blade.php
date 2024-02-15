@@ -47,7 +47,7 @@
             @endif
             @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
                 <li class="{{ Request::is('registrant') ? 'active' : '' }}">
-                    <a href="{{ route ('registrant') }}">
+                    <a href="{{ route ('registrant.index') }}">
                         <i class="material-icons">people</i>
                         <span>Data Pendaftar</span>
                     </a>

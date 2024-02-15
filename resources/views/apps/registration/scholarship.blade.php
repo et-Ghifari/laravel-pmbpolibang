@@ -15,10 +15,17 @@
             </div>
             <div class="body">
                 <div class="row clearfix">
+                    @error('email')
+                        <div class="alert bg-red alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <b>{{ $message }}</b>
+                        </div>
+                    @enderror
                     <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
                         <div class="panel-group" id="accordion_19" role="tablist" aria-multiselectable="true">
-                            <form id="form_validation" method="POST">
-                                                                    <div class="panel panel-col-cyan">
+                            <form id="form_validation" action="{{ route ('registrant.store') }}" method="POST">
+                                @csrf
+                                <div class="panel panel-col-cyan">
                                     <div class="panel-heading" role="tab" id="headingOne_19">
                                         <h4 class="panel-title">
                                             <a role="button" data-toggle="collapse" href="#collapseOne_19" aria-expanded="true" aria-controls="collapseOne_19">
@@ -31,6 +38,7 @@
                                             <label>Jalur Pendaftaran</label>
                                             <div class="form-group form-float">
                                                 <div class="demo-radio-button">
+                                                    <input type="hidden" name="angkatan" class="form-control" placeholder="nama lengkap" value="{{ date('Y') }}" required autocomplete="off"/>
                                                     <input name="jalur" value="Beasiswa" type="radio" id="radio_1" checked required />
                                                     <label for="radio_1">Jalur Beasiswa</label>
                                                 </div>
@@ -94,19 +102,19 @@
                                             <label>NISN*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="nisn" placeholder="nisn" maxlength="10" minlength="10" required autocomplete="off"/>
+                                                    <input type="text" class="form-control" name="nisn" placeholder="nisn" value="{{ old('nisn') }}" maxlength="10" minlength="10" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>NIK*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="nik" class="form-control" placeholder="nik" maxlength="16" minlength="16" required autocomplete="off"/>
+                                                    <input type="text" name="nik" class="form-control" placeholder="nik" value="{{ old('nik') }}" maxlength="16" minlength="16" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Nama Lengkap*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="nama" class="form-control" placeholder="nama lengkap" value="GHIFARI" required autocomplete="off"/>
+                                                    <input type="text" name="nama" class="form-control" placeholder="nama lengkap" value="{{ auth()->user()->name }}" required autocomplete="off" readonly/>
                                                 </div>
                                             </div>
                                             <label>Tempat Tanggal Lahir*</label>
@@ -114,13 +122,13 @@
                                                 <div class="col-sm-2">
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <input type="text" name="tempat" class="form-control" placeholder="tempat" required autocomplete="off"/>
+                                                            <input type="text" name="tptLahir" class="form-control" value="{{ old('tptLahirs') }}" placeholder="tempat" required autocomplete="off"/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group form-float">
-                                                        <select name="tgl" class="form-control show-tick" required>
+                                                        <select name="tglLahir" class="form-control show-tick" required>
                                                             <option value="">-- Pilih Tangal --</option>
                                                             <?php for ($a = 1; $a < 32; $a++) {
                                                             ?>
@@ -133,7 +141,7 @@
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group form-float">
-                                                        <select name="bln" class="form-control show-tick" required>
+                                                        <select name="blnLahir" class="form-control show-tick" required>
                                                             <option value="">-- Pilih Bulan --</option>
                                                             <option value="Januari">Januari</option>
                                                             <option value="Februari">Februari</option>
@@ -152,7 +160,7 @@
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group form-float">
-                                                        <select name="thn" class="form-control show-tick" required>
+                                                        <select name="thnLahir" class="form-control show-tick" required>
                                                             <option value="">-- Pilih Tahun --</option>
                                                             <?php
                                                             $th = date('Y') - 35;
@@ -196,13 +204,13 @@
                                             <label>Anak ke</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="anakke" class="form-control" placeholder="isi angka" autocomplete="off"/>
+                                                    <input type="text" name="anak" value="{{ old ('anak') }}" class="form-control" placeholder="isi angka" autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Jumlah Saudara</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="saudara" class="form-control" placeholder="isi angka" autocomplete="off"/>
+                                                    <input type="text" name="saudara" value="{{ old ('saudara') }}" class="form-control" placeholder="isi angka" autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Berat Badan</label>
@@ -210,7 +218,7 @@
                                                 <div class="col-sm-2">
                                                     <div class="input-group">
                                                         <div class="form-line">
-                                                            <input type="text" name="berat" class="form-control" placeholder="isi angka" autocomplete="off"/>
+                                                            <input type="text" name="berat" value="{{ old ('berat') }}" class="form-control" placeholder="isi angka" autocomplete="off"/>
                                                         </div>
                                                         <span class="input-group-addon">
                                                             <label>Kg</label>
@@ -223,7 +231,7 @@
                                                 <div class="col-sm-2">
                                                     <div class="input-group">
                                                         <div class="form-line">
-                                                            <input type="text" name="tinggi" class="form-control" placeholder="isi angka" autocomplete="off"/>
+                                                            <input type="text" name="tinggi" value="{{ old ('tinggi') }}" class="form-control" placeholder="isi angka" autocomplete="off"/>
                                                         </div>
                                                         <span class="input-group-addon">
                                                             <label>Cm</label>
@@ -234,52 +242,52 @@
                                             <label>Provinsi*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="provinsi" class="form-control" placeholder="provinsi" required autocomplete="off"/>
+                                                    <input type="text" name="provinsi" value="{{ old ('provinsi') }}" class="form-control" placeholder="provinsi" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Kabupaten*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="kabupaten" class="form-control" placeholder="kabupaten" required autocomplete="off"/>
+                                                    <input type="text" name="kabupaten" value="{{ old ('kabupaten') }}" class="form-control" placeholder="kabupaten" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Kecamatan*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="kecamatan" class="form-control" placeholder="kecamatan" required autocomplete="off"/>
+                                                    <input type="text" name="kecamatan" value="{{ old ('kecamatan') }}" class="form-control" placeholder="kecamatan" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Desa*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="desa" class="form-control" placeholder="desa" required autocomplete="off"/>
+                                                    <input type="text" name="desa" value="{{ old ('desa') }}" class="form-control" placeholder="desa" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Jl/No.Rumah/dll</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <textarea type="text" name="jalan" class="form-control" placeholder="Jl./No.Rumah/dll" autocomplete="off"></textarea>
+                                                    <textarea type="text" name="jalan" value="{{ old ('jalan') }}" class="form-control" placeholder="Jl./No.Rumah/dll" autocomplete="off"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row clearfix">
                                                 <div class="col-sm-2">
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <input type="text" name="rt" class="form-control" placeholder="RT" required autocomplete="off"/>
+                                                            <input type="text" name="rt" value="{{ old ('rt') }}" class="form-control" placeholder="RT" required autocomplete="off"/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <input type="text" name="rw" class="form-control" placeholder="RW" required autocomplete="off"/>
+                                                            <input type="text" name="rw" value="{{ old ('rw') }}" class="form-control" placeholder="RW" required autocomplete="off"/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <input type="text" name="kodepos" class="form-control" placeholder="Kode Pos" maxlength="5" minlength="5" required autocomplete="off"/>
+                                                            <input type="text" name="kodepos" value="{{ old ('kodepos') }}" class="form-control" placeholder="Kode Pos" maxlength="5" minlength="5" required autocomplete="off"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -287,32 +295,32 @@
                                             <label>Handphone/WA*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="hp" class="form-control" placeholder="handphone/wa" required autocomplete="off"/>
+                                                    <input type="text" name="nohp" value="{{ old ('nohp') }}" class="form-control" placeholder="handphone/wa" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Alamat Email*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="email" class="form-control" value="ghifari.et@gmail.com" required autocomplete="off"/>
+                                                    <input type="text" name="email" class="form-control" value="{{ auth()->user()->email }}" required autocomplete="off" readonly/>
                                                 </div>
                                             </div>
                                             <label>Asal Sekolah*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="asalSekolah" class="form-control" placeholder="asal sekolah" required autocomplete="off"/>
+                                                    <input type="text" name="sekolah" value="{{ old ('sekolah') }}" class="form-control" placeholder="asal sekolah" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>No. SKHUN</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="skhun" class="form-control" placeholder="no. skhun" autocomplete="off"/>
+                                                    <input type="text" name="skhun" value="{{ old ('skhun') }}" class="form-control" placeholder="no. skhun" autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Tahun Lulus*</label>
                                             <div class="row clearfix">
                                                 <div class="col-sm-3">
                                                     <div class="form-group form-float">
-                                                        <select name="tahunLulus" class="form-control show-tick" required>
+                                                        <select name="lulus" class="form-control show-tick" required>
                                                             <option value="">-- Pilih Tahun --</option>
                                                             <?php
                                                             $th = date('Y') - 35;
@@ -342,25 +350,25 @@
                                             <label>Nomor KK*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="kk" class="form-control" placeholder="nomor kk" maxlength="16" minlength="16" required autocomplete="off"/>
+                                                    <input type="text" name="kk" value="{{ old ('kk') }}" class="form-control" placeholder="nomor kk" maxlength="16" minlength="16" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <br></br>
                                             <label>NIK Ayah*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="nikAyah" class="form-control" placeholder="nik ayah" maxlength="16" minlength="16" required autocomplete="off"/>
+                                                    <input type="text" name="nikAyah" value="{{ old ('nikAyah') }}" class="form-control" placeholder="nik ayah" maxlength="16" minlength="16" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Nama Ayah*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="ayah" class="form-control" placeholder="nama ayah" required autocomplete="off"/>
+                                                    <input type="text" name="namaAyah" value="{{ old ('namaAyah') }}" class="form-control" placeholder="nama ayah" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Pekerjaan Ayah*</label>
                                             <div class="form-group form-float">
-                                                <select name="pekerjaanAyah" class="form-control show-tick" required>
+                                                <select name="pekerjaanA" class="form-control show-tick" required>
                                                     <option value="">-- Pilih --</option>
                                                     <option value="Buruh">Buruh</option>
                                                     <option value="Dosen">Dosen</option>
@@ -377,7 +385,7 @@
                                             </div>
                                             <label>Pendidikan Ayah*</label>
                                             <div class="form-group form-float">
-                                                <select name="pendidikanAyah" class="form-control show-tick" required>
+                                                <select name="pendidikanA" class="form-control show-tick" required>
                                                     <option value="">-- Pilih --</option>
                                                     <option value="SD/MI">SD/MI</option>
                                                     <option value="SMP/MTs">SMP/MTs</option>
@@ -395,18 +403,18 @@
                                             <label>NIK Ibu*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="nikIbu" class="form-control" placeholder="nik ibu" maxlength="16" minlength="16" required autocomplete="off"/>
+                                                    <input type="text" name="nikIbu" value="{{ old ('nikIbu') }}" class="form-control" placeholder="nik ibu" maxlength="16" minlength="16" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Nama Ibu*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="ibu" class="form-control" placeholder="nama ibu" required autocomplete="off"/>
+                                                    <input type="text" name="namaIbu" value="{{ old ('namaIbu') }}" class="form-control" placeholder="nama ibu" required autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Pekerjaan Ibu*</label>
                                             <div class="form-group form-float">
-                                                <select name="pekerjaanIbu" class="form-control show-tick" required>
+                                                <select name="pekerjaanI" class="form-control show-tick" required>
                                                     <option value="">-- Pilih --</option>
                                                     <option value="Buruh">Buruh</option>
                                                     <option value="Dosen">Dosen</option>
@@ -423,7 +431,7 @@
                                             </div>
                                             <label>Pendidikan Ibu*</label>
                                             <div class="form-group form-float">
-                                                <select name="pendidikanIbu" class="form-control show-tick" required>
+                                                <select name="pendidikanI" class="form-control show-tick" required>
                                                     <option value="">-- Pilih --</option>
                                                     <option value="SD/MI">SD/MI</option>
                                                     <option value="SMP/MTs">SMP/MTs</option>
@@ -466,7 +474,7 @@
                                             <label>Cabang Lomba</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="lomba" class="form-control" placeholder="cabang lomba" autocomplete="off"/>
+                                                    <input type="text" name="lomba" value="{{ old ('lomba') }}" class="form-control" placeholder="cabang lomba" autocomplete="off"/>
                                                 </div>
                                             </div>
                                             <label>Tingkat Lomba</label>
@@ -493,7 +501,7 @@
                                             <label>Tahun Lomba</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="tahun" class="form-control" placeholder="tahun lomba" autocomplete="off"/>
+                                                    <input type="text" name="tahun" value="{{ old ('tahun') }}" class="form-control" placeholder="tahun lomba" autocomplete="off"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -545,7 +553,7 @@
                                             <label>Mengetahui Sumber Informasi Tentang Politeknik Balekambang Jepara*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="sumber" class="form-control" placeholder="sumber informasi..." autocomplete="off"/>
+                                                    <input type="text" name="sumber" value="{{ old ('sumber') }}" class="form-control" placeholder="sumber informasi..." autocomplete="off"/>
                                                 </div>
                                             </div>
                                         </div>

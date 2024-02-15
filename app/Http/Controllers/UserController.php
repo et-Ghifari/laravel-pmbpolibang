@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -14,7 +13,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = DB::table('users')->paginate();
+        $users = User::paginate();
         return view('apps.user.index', compact('users'));
     }
 

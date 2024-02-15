@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.apps')
 @section('title', 'Pendaftar')
 @push('style')
     <link href="{{ asset ('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
@@ -105,16 +105,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($registrants as $index=>$registrant)
                                     <tr>
-                                        <td>PMB202300003</td>
-                                        <td>BEASISWA</td>
-                                        <td>NIA PUSPITA SARI</td>
-                                        <td>niap9556@gmail.com</td>
-                                        <td>+62 895-3609-74369</td>
+                                        <td>{{ "PMB" }} {{ date('Y') }} {{ $index + $registrants->firstItem() }}</td>
+                                        <td>{{ $registrant->jalur }}</td>
+                                        <td>{{ $registrant->nama }}</td>
+                                        <td>{{ $registrant->email }}</td>
+                                        <td>{{ $registrant->nohp }}</td>
                                         <td class="align-center">
-                                            <a href="" class="btn bg-cyan waves-effect" data-toggle="tooltip" data-placement="left" title="Review"><i class="material-icons">visibility</i></a>
+                                            <a href="{{ route ('registrant.edit', $registrant->id) }}" class="btn bg-cyan waves-effect" data-toggle="tooltip" data-placement="left" title="Review"><i class="material-icons">visibility</i></a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

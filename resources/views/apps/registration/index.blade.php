@@ -15,6 +15,11 @@
                     </div>
                     <div class="body align-center">
                         <div class="row">
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    @include('layouts.alert')
+                                </div>
+                            </div>
                             <div class="col-sm-3 col-md-2">
                             </div>
                             <div class="col-sm-3 col-md-4">

@@ -48,7 +48,7 @@
                                     @foreach ($users as $index=>$user)
                                     <tr>
                                         <td class="col-sm-1 align-center">
-                                            {{ $index + $users->firstItem() }}
+                                          {{ $index + $users->firstItem() }}
                                         </td>
                                         <td class="col-sm-4 ">{{ $user->name }}</td>
                                         <td class="col-sm-4 ">{{ $user->email }}</td>
