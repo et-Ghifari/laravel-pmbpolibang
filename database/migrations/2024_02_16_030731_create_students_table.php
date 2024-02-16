@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registrants', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('angkatan', 8);
             $table->string('jalur', 20);
@@ -60,7 +60,7 @@ return new class extends Migration
             $table->string('tahun', 8)->nullable();
             $table->string('organisasi', 128);
             $table->string('keadaan', 128);
-            $table->string('sumber', 128)->nullable();
+            $table->string('sumber', 128);
             $table->timestamps();
         });
     }
@@ -70,6 +70,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registrants');
+        Schema::dropIfExists('students');
     }
 };

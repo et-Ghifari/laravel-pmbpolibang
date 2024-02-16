@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrantController;
+use App\Http\Controllers\ConfirmationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,11 +78,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
         return view('apps.payment', ['type_menu' => '']);
     })->name('payment')->middleware('can:user');
 
-    Route::get('assignment', function () {
-        //return abort(503);
-        return view('apps.assignment', ['type_menu' => '']);
-    })->name('assignment')->middleware('can:user');
-
     Route::get('sliding', function () {
         //return abort(503);
         return view('apps.sliding-image.index', ['type_menu' => 'interface']);
@@ -102,6 +98,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
         //return abort(503);
         return view('apps.prodi.index', ['type_menu' => 'interface']);
     })->name('prodi')->middleware('can:admin');
+    Route::get('biaya', function () {
+        //return abort(503);
+        return view('apps.biaya.index', ['type_menu' => 'interface']);
+    })->name('biaya')->middleware('can:admin');
     Route::get('fasilitas', function () {
         //return abort(503);
         return view('apps.fasilitas.index', ['type_menu' => 'interface']);
@@ -118,6 +118,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::resource('user', UserController::class)->middleware('can:super');
     Route::resource('registrant', RegistrantController::class);
+    Route::resource('confirmation', ConfirmationController::class);
 });
 Route::get('password_link', function () {
     return view('auth.password_link', ['type_menu' => '']);

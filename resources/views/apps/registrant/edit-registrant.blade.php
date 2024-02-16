@@ -1,4 +1,4 @@
-@extends('layouts.apps')
+@extends('layouts.app')
 @section('title', 'Pendaftar')
 @push('style')
     <link href="{{ asset ('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
@@ -86,7 +86,9 @@
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="informasi">
-                                    <form id="form_validation" method="POST">
+                                    <form id="form_validation" method="POST" action="{{ route ('registrant.update', $registrant) }}">
+                                    @csrf
+                                    @method('PUT')
                                         <label>JALUR</label>
                                         <div class="form-group form-float">
                                             <div class="demo-radio-button">
@@ -137,6 +139,7 @@
                                         <label>NAMA</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
+                                                <input type="hidden" class="form-control" name="angkatan" placeholder="nama" required autocomplete="off" value="{{ $registrant->angkatan }}"/>
                                                 <input type="text" class="form-control" name="nama" placeholder="nama" required autocomplete="off" value="{{ $registrant->nama }}"/>
                                             </div>
                                         </div>
@@ -163,7 +166,7 @@
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="form-group form-float">
-                                                    <select name="tgl" class="form-control show-tick" required>
+                                                    <select name="tglLahir" class="form-control show-tick" required>
                                                         <option value="{{ $registrant->tglLahir }}">{{ $registrant->tglLahir }}</option>
                                                         <?php for ($a = 1; $a < 32; $a++) {
                                                         ?>
@@ -176,7 +179,7 @@
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="form-group form-float">
-                                                    <select name="bln" class="form-control show-tick" required>
+                                                    <select name="blnLahir" class="form-control show-tick" required>
                                                         <option value="{{ $registrant->blnLahir }}">{{ $registrant->blnLahir }}</option>
                                                         <option value="Januari">Januari</option>
                                                         <option value="Februari">Februari</option>
@@ -195,7 +198,7 @@
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="form-group form-float">
-                                                    <select name="thn" class="form-control show-tick" required>
+                                                    <select name="thnLahir" class="form-control show-tick" required>
                                                         <option value="{{ $registrant->thnLahir }}">{{ $registrant->thnLahir }}</option>
                                                         <?php $th = date('Y') - 30; ?>
                                                         <?php for ($th; $th <= date('Y'); $th++) {
@@ -406,7 +409,7 @@
                                         <label>Asal Sekolah</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="asal" class="form-control" placeholder="asal sekolah" autocomplete="off" value="{{ $registrant->asal }}"/>
+                                                <input type="text" name="sekolah" class="form-control" placeholder="asal sekolah" autocomplete="off" value="{{ $registrant->sekolah }}"/>
                                             </div>
                                         </div>
                                         <label>SKHUN</label>
@@ -595,12 +598,14 @@
                                                 <input type="text" name="sumber" class="form-control" placeholder="tahun lomba" autocomplete="off" value="{{ !isset($registrant->sumber) ? '-' : $registrant->sumber }}"/>
                                             </div>
                                         </div>
-                                        <div class="button-demo align-center">
-                                            <button type="submit" class="btn bg-green m-t-15 waves-effect" name="editInfo">
-                                                <i class="material-icons">save</i>
-                                                <span><strong>SIMPAN</strong></span>
-                                            </button>
-                                        </div>
+                                        @if (auth()->user()->role == 'super' || auth()->user()->role == 'admin')
+                                            <div class="button-demo align-center">
+                                                <button type="submit" class="btn bg-green m-t-15 waves-effect" name="editInfo">
+                                                    <i class="material-icons">save</i>
+                                                    <span><strong>SIMPAN</strong></span>
+                                                </button>
+                                            </div>
+                                        @endif
                                     </form>
                                 </div>
                             </div>

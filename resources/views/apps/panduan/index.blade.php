@@ -9,46 +9,24 @@
             <h2>DATA PANDUAN</h2>
         </div>
         <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="card">
-                    <div class="header">
-                        <div class="row clearfix">
-                            <div class="col-xs-12 col-sm-6">
-                                <h2>Data Panduan</h2>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 align-right">
-                                <div class="switch panel-switch-btn">
-                                    <a type="button" href="{{ url ('previous') }}" class="btn btn-default waves-effect" data-toggle="tooltip" data-placement="bottom" title="Perbarui"><i class="material-icons">refresh</i></a>
-                                </div>
-                            </div>
+                    <div class="body">
+                        <div class="align-center">
+                            <img src="{{ asset('images/panduan/panduan pendaftaran.png') }}" width="250" height="125" alt="{{ auth()->user()->name }}" />
+                            <br></br>
+                            <a href="" class="btn bg-cyan waves-effect" title="Edit User"><i class="material-icons">edit</i></a>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="card">
                     <div class="body">
-                        <div class="table">
-                            <table class="table table-bordered table-striped table-hover js-basic-example">
-                                <thead>
-                                    <tr>
-                                        <th class="col-sm-1">NO.</th>
-                                        <th class="col-sm-1">JALUR</th>
-                                        <th class="col-sm-3">NAMA LENGKAP</th>
-                                        <th class="col-sm-3">ALAMAT EMAIL</th>
-                                        <th class="col-sm-2">No.TELP/WA</th>
-                                        <th class="col-sm-1 align-center"><i class="material-icons">settings</i></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>PMB202300003</td>
-                                        <td>BEASISWA</td>
-                                        <td>NIA PUSPITA SARI</td>
-                                        <td>niap9556@gmail.com</td>
-                                        <td>+62 895-3609-74369</td>
-                                        <td class="align-center">
-                                            <a href="" class="btn bg-cyan waves-effect" data-toggle="tooltip" data-placement="left" title="Review"><i class="material-icons">visibility</i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="align-center">
+                            <img src="{{ asset('images/panduan/waktu pendaftaran.png') }}" width="250" height="125" alt="{{ auth()->user()->name }}" />
+                            <br></br>
+                            <a href="" class="btn bg-cyan waves-effect" title="Edit User"><i class="material-icons">edit</i></a>
                         </div>
                     </div>
                 </div>

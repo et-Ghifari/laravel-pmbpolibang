@@ -36,7 +36,6 @@
                     <span>Home</span>
                 </a>
             </li>
-            <li class="header"></li>
             @if (auth()->user()->role=='superuser')
                 <li class="{{ Request::is('user') ? 'active' : ''}} || {{ Request::is('add-user') ? 'active' : ''}}">
                     <a href="{{ route ('user.index') }}">
@@ -59,14 +58,14 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('confirmation') ? 'active' : '' }}">
-                    <a href="{{ route ('confirmation') }}">
+                    <a href="{{ route ('confirmation.index') }}">
                         <i class="material-icons">confirmation_number</i>
                         <span>Konfirmasi Pembayaran</span>
                     </a>
                 </li>
             @endif
             @if (auth()->user()->role=='user')
-                <li class="{{ Request::is('registration') ? 'active' : '' }} || {{ Request::is('independent') ? 'active' : ''}} || {{ Request::is('scholarship') ? 'active' : ''}} || {{ Request::is('edit-registration') ? 'active' : ''}} || {{ Request::is('ass-registration') ? 'active' : ''}}">
+                <li class="{{ Request::is('registration') ? 'active' : '' }} || {{ Request::is('independent') ? 'active' : ''}} || {{ Request::is('scholarship') ? 'active' : ''}} || {{ Request::is('edit-registration') ? 'active' : ''}}">
                     <a href="{{ route ('registration') }}">
                         <i class="material-icons">assignment</i>
                         <span>Formulir Pendaftaran</span>
@@ -79,43 +78,54 @@
                     </a>
                 </li>
             @endif
-            <li class="header"></li>
             @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
-                <li class="{{ $type_menu == 'interface' ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">view_compact</i>
-                        <span>Manajemen Tampilan</span>
+            <li class="header">MANAJEMEN TAMPILAN</li>
+                <li class="{{ Request::is('sliding') ? 'active' : '' }}">
+                    <a href="{{ route ('sliding') }}">
+                        <i class="material-icons">image</i>
+                        <span>Sliding Image</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li class="{{ Request::is('sliding') ? 'active' : '' }}">
-                            <a href="{{ route ('sliding') }}">Sliding Image</a>
-                        </li>
-                        <li class="{{ Request::is('visi') ? 'active' : '' }}">
-                            <a href="{{ route ('visi') }}">Visi Misi</a>
-                        </li>
-                        <li class="{{ Request::is('panduan') ? 'active' : '' }}">
-                            <a href="{{ route ('panduan') }}">Panduan</a>
-                        </li>
-                        <li class="{{ Request::is('beasiswa') ? 'active' : '' }}">
-                            <a href="{{ route ('beasiswa') }}">Beasiswa</a>
-                        </li>
-                        <li class="{{ Request::is('prodi') ? 'active' : '' }}">
-                            <a href="{{ route ('prodi') }}">Prodi</a>
-                        </li>
-                        <li class="{{ Request::is('fasilitas') ? 'active' : '' }}">
-                            <a href="{{ route ('fasilitas') }}">Fasilitas</a>
-                        </li>
-                        <li class="{{ Request::is('testimoni') ? 'active' : '' }}">
-                            <a href="{{ route ('testimoni') }}">Testimoni</a>
-                        </li>
-                    </ul>
                 </li>
-            @endif
-            @if (auth()->user()->role=='user')
-                <li class="{{ Request::is('assignment') ? 'active' : '' }}">
-                    <a href="{{ url('assignment') }}">
-                        <i class="material-icons">check_circle</i>
-                        <span>Status Pendaftaran</span>
+                <li class="{{ Request::is('visi') ? 'active' : '' }}">
+                    <a href="{{ route ('visi') }}">
+                        <i class="material-icons">account_balance</i>
+                        <span>Visi Misi</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('panduan') ? 'active' : '' }}">
+                    <a href="{{ route ('panduan') }}">
+                        <i class="material-icons">book</i>
+                        <span>Panduan</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('beasiswa') ? 'active' : '' }}">
+                    <a href="{{ route ('beasiswa') }}">
+                        <i class="material-icons">school</i>
+                        <span>Beasiswa</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('prodi') ? 'active' : '' }}">
+                    <a href="{{ route ('prodi') }}">
+                        <i class="material-icons">work</i>
+                        <span>Prodi</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('biaya') ? 'active' : '' }}">
+                    <a href="{{ route ('biaya') }}">
+                        <i class="material-icons">monetization_on</i>
+                        <span>Biaya</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('fasilitas') ? 'active' : '' }}">
+                    <a href="{{ route ('fasilitas') }}">
+                        <i class="material-icons">place</i>
+                        <span>Fasilitas</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('testimoni') ? 'active' : '' }}">
+                    <a href="{{ route ('testimoni') }}">
+                        <i class="material-icons">message</i>
+                        <span>Testimoni</span>
                     </a>
                 </li>
             @endif
@@ -126,7 +136,7 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; 2023 <a href="{{ url ('') }}">Admin Laravel - Flutter</a>.
+            &copy; 2023 <a href="{{ url ('') }}">Admin PMB | POLIBANG</a>.
         </div>
         <div class="version">
             <b>Version: </b> 1.0.0

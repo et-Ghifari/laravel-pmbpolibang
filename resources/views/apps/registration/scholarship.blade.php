@@ -10,18 +10,18 @@
         </div>
         <div class="card">
             <div class="header">
-                <h2>FORMULIR PENDAFTARAN MANDIRI</h2>
+                <h2>FORMULIR PENDAFTARAN BEASISWA</h2>
                 <small>Jika ada pertanyaan/masalah dalam pendaftaran bisa menghubungi panitia pendaftaran</small>
             </div>
             <div class="body">
                 <div class="row clearfix">
-                    @error('email')
-                        <div class="alert bg-red alert-dismissible" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <b>{{ $message }}</b>
-                        </div>
-                    @enderror
                     <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                        @error('email')
+                            <div class="alert bg-red alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <b>"Maaf Anda Sudah Melakukan Pendaftaran"</b>
+                            </div>
+                        @enderror
                         <div class="panel-group" id="accordion_19" role="tablist" aria-multiselectable="true">
                             <form id="form_validation" action="{{ route ('registrant.store') }}" method="POST">
                                 @csrf
@@ -550,7 +550,7 @@
                                     </div>
                                     <div id="collapseSeven_19" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSix_19">
                                         <div class="panel-body">
-                                            <label>Mengetahui Sumber Informasi Tentang Politeknik Balekambang Jepara*</label>
+                                            <label>Mengetahui Sumber Informasi Tentang Politeknik Balekambang Jepara</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" name="sumber" value="{{ old ('sumber') }}" class="form-control" placeholder="sumber informasi..." autocomplete="off"/>

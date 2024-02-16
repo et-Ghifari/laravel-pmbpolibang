@@ -1,16 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Pembayaran')
+@section('title', 'Konfirmasi')
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>BUKTI PEMBAYARAN</h2>
+            <h2>KONFIRMASI BUKTI PEMBAYARAN</h2>
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>BUKTI PEMBAYARAN PENDAFTARAN</h2>
-                        <small>Jika ada pertanyaan/masalah dalam pendaftaran bisa menghubungi panitia pendaftaran</small>
+                        <h2>Konfirmasi Bukti Pembayaran</h2>
                     </div>
                     <div class="body">
                         <div class="row clearfix">
@@ -30,47 +29,53 @@
                                 <b>"Maaf Format File Tidak Sesuai"</b>
                             </div>
                         @enderror
-                        <form id="form_validation" action="{{ route('confirmation.store') }}" method="POST" enctype="multipart/form-data">
+                        <form id="form_validation" action="{{ route('confirmation.update', $confirmation) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <label>Jalur Pendaftaran</label>
                             <div class="form-group form-float">
-                                <div class="demo-radio-button">
-                                    <input name="jalur" value="Mandiri" type="radio" id="radio_1" required />
-                                    <label for="radio_1">Jalur Mandiri</label>
-                                    <input name="jalur" value="Beasiswa" type="radio" id="radio_2" required />
-                                    <label for="radio_2">Jalur Beasiswa</label>
-                                </div>
+                                @if ($confirmation->jalur=='Mandiri')
+                                    <div class="demo-radio-button">
+                                        <input name="jalur" value="Mandiri" type="radio" id="radio_1" required checked/>
+                                        <label for="radio_1">Jalur Mandiri</label>
+                                        <input name="jalur" value="Beasiswa" type="radio" id="radio_2" required />
+                                        <label for="radio_2">Jalur Beasiswa</label>
+                                    </div>
+                                @endif
+                                @if ($confirmation->jalur=='Beasiswa')
+                                    <div class="demo-radio-button">
+                                        <input name="jalur" value="Mandiri" type="radio" id="radio_1" required />
+                                        <label for="radio_1">Jalur Mandiri</label>
+                                        <input name="jalur" value="Beasiswa" type="radio" id="radio_2" required checked/>
+                                        <label for="radio_2">Jalur Beasiswa</label>
+                                    </div>
+                                @endif
                             </div>
                             <br>
                             <label>Nama Lengkap</label>
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="nama" placeholder="nama" required autocomplete="off" value="{{ auth()->user()->name }}" readonly/>
+                                    <input type="text" class="form-control" name="nama" placeholder="nama" required autocomplete="off" value="{{ $confirmation->nama }}" readonly/>
                                 </div>
                             </div>
                             <label>Alamat Email</label>
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="email" placeholder="nama" required autocomplete="off" value="{{ auth()->user()->email }}" readonly/>
+                                    <input type="text" class="form-control" name="email" placeholder="nama" required autocomplete="off" value="{{ $confirmation->email }}" readonly/>
                                 </div>
                             </div>
-                            <div class="body">
-                                <div class="row">
-                                    <div class="form-group form-float">
-                                        <label>Upload Bukti Pembayaran*</label>
-                                        <img id="buktiDisplay" onclick="buktiClick()" src="{{ asset ('images/file.png') }}" class="img-responsive">
-                                        <input id="buktiFile" type="file" name="bukti" onchange="displayBukti(this)" class="thumbnail">
-                                    </div>
-                                    <p>Format (jpg, jpeg, png, pdf) dan Maksimal Size 2.5 Mb</p>
+                            <div class="demo-switch">
+                                <div class="switch">
+                                    <label>BELUM<input type="checkbox" name="status" value="SELESAI" {{ $confirmation->status == 'SELESAI' ? 'checked' : '' }}><span class="lever" ></span>SELESAI</label>
                                 </div>
                             </div>
-                            <h5><strong>* = WAJIB DIISI!</strong></h5>
                             <div class="form-group align-center">
-                                <button type="submit" class="btn bg-green m-t-15 waves-effect" name="uploadBukti">
-                                    <i class="material-icons">save</i>
-                                    <span><strong>SIMPAN</strong></span>
-                                </button>
-                                <h5><strong>~ Cek Terlebih Dahulu File Yang Akan Di Upload! ~</strong></h5>
+                                @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
+                                    <button type="submit" class="btn bg-green m-t-15 waves-effect" name="uploadBukti">
+                                        <i class="material-icons">save</i>
+                                        <span><strong>SIMPAN</strong></span>
+                                    </button>
+                                @endif
                             </div>
                         </form>
                     </div>

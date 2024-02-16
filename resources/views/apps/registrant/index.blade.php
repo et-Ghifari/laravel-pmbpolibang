@@ -1,4 +1,4 @@
-@extends('layouts.apps')
+@extends('layouts.app')
 @section('title', 'Pendaftar')
 @push('style')
     <link href="{{ asset ('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
@@ -25,6 +25,11 @@
                     </div>
                     <div class="body">
                         <div class="row">
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    @include('layouts.alert')
+                                </div>
+                            </div>
                             <div class="col-lg-12 col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box bg-cyan">
                                     <div class="icon">
@@ -32,7 +37,7 @@
                                     </div>
                                     <div class="content">
                                         <div class="text">TOTAL</div>
-                                        <div class="number count-to" data-from="0" data-to="173" data-speed="1000" data-fresh-interval="20"></div>
+                                        <div class="number count-to" data-from="0" data-to="{{ $all }}" data-speed="1000" data-fresh-interval="20"></div>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +48,7 @@
                                     </div>
                                     <div class="content">
                                         <div class="text">RPL</div>
-                                        <div class="number count-to" data-from="0" data-to="54" data-speed="1000" data-fresh-interval="20"></div>
+                                        <div class="number count-to" data-from="0" data-to="{{ $rpl }}" data-speed="1000" data-fresh-interval="20"></div>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +59,7 @@
                                     </div>
                                     <div class="content">
                                         <div class="text">ABI</div>
-                                        <div class="number count-to" data-from="0" data-to="108" data-speed="1000" data-fresh-interval="20"></div>
+                                        <div class="number count-to" data-from="0" data-to="{{ $abi }}" data-speed="1000" data-fresh-interval="20"></div>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +70,7 @@
                                     </div>
                                     <div class="content">
                                         <div class="text">AKP</div>
-                                        <div class="number count-to" data-from="0" data-to="11" data-speed="1000" data-fresh-interval="20"></div>
+                                        <div class="number count-to" data-from="0" data-to="{{ $akp }}" data-speed="1000" data-fresh-interval="20"></div>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +81,7 @@
                                     </div>
                                     <div class="content">
                                         <div class="text">Jalur Mandiri</div>
-                                        <div class="number count-to" data-from="0" data-to="7" data-speed="1000" data-fresh-interval="20"></div>
+                                        <div class="number count-to" data-from="0" data-to="{{ $mandiri }}" data-speed="1000" data-fresh-interval="20"></div>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +92,7 @@
                                     </div>
                                     <div class="content">
                                         <div class="text">Jalur Beasiswa</div>
-                                        <div class="number count-to" data-from="0" data-to="166" data-speed="1000" data-fresh-interval="20"></div>
+                                        <div class="number count-to" data-from="0" data-to="{{ $beasiswa }}" data-speed="1000" data-fresh-interval="20"></div>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +118,9 @@
                                         <td>{{ $registrant->email }}</td>
                                         <td>{{ $registrant->nohp }}</td>
                                         <td class="align-center">
-                                            <a href="{{ route ('registrant.edit', $registrant->id) }}" class="btn bg-cyan waves-effect" data-toggle="tooltip" data-placement="left" title="Review"><i class="material-icons">visibility</i></a>
+                                            @if (auth()->user()->role == 'superuser' || auth()->user()->role == 'admin')
+                                                <a href="{{ route ('registrant.edit', $registrant->id) }}" class="btn bg-cyan waves-effect" data-toggle="tooltip" data-placement="left" title="Review"><i class="material-icons">visibility</i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -137,4 +144,6 @@
     <script src="{{ asset ('plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
     <script src="{{ asset ('plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
     <script src="{{ asset ('js/pages/tables/jquery-datatable.js') }}"></script>
+    <script src="{{ asset ('js/pages/index.js') }}"></script>
+    <script src="{{ asset ('plugins/jquery-countto/jquery.countTo.js') }}"></script>
 @endpush
