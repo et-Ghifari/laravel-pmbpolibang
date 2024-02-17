@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sliding;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SlidingController extends Controller
 {
@@ -12,7 +13,8 @@ class SlidingController extends Controller
      */
     public function index()
     {
-        //
+        $slidings = Sliding::paginate();
+        return view('apps.sliding.index', compact('slidings'));
     }
 
     /**
@@ -20,7 +22,7 @@ class SlidingController extends Controller
      */
     public function create()
     {
-        //
+        return view('apps.sliding.add-sliding');
     }
 
     /**
@@ -28,7 +30,17 @@ class SlidingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'foto'     => 'required|image|mimes:jpeg,jpg,png',
+        ]);
+        $image = $request->file('foto');
+        $image->storeAs('public/sliding', $image->hashName());
+
+        Sliding::create([
+            'foto'=>$image->hashName(),
+        ]);
+
+        return redirect(route('sliding.index'))->with('success', 'Mengunggah Sliding Image Berhasil!');
     }
 
     /**
@@ -36,7 +48,7 @@ class SlidingController extends Controller
      */
     public function show(Sliding $sliding)
     {
-        //
+        return view('welcome', ['sliding' => $sliding]);
     }
 
     /**
@@ -44,7 +56,7 @@ class SlidingController extends Controller
      */
     public function edit(Sliding $sliding)
     {
-        //
+        return view('apps.sliding.edit-sliding')->with('sliding', $sliding);
     }
 
     /**
@@ -52,7 +64,16 @@ class SlidingController extends Controller
      */
     public function update(Request $request, Sliding $sliding)
     {
-        //
+        $this->validate($request, [
+            'foto'     => 'required|image|mimes:jpeg,jpg,png',
+        ]);
+        $image = $request->file('foto');
+        $image->storeAs('public/sliding', $image->hashName());
+        Storage::delete('public/sliding/'.$sliding->foto);
+        $sliding->update([
+            'foto'=>$image->hashName(),
+        ]);
+        return redirect(route('sliding.index'))->with('success', 'Sliding Image berhasil di Ubah!');
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrantController;
 use App\Http\Controllers\ConfirmationController;
+use App\Http\Controllers\SlidingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,12 +118,13 @@ Route::middleware(['auth', 'verified'])->group(function(){
     })->name('blank');
 
     Route::resource('user', UserController::class)->middleware('can:super');
+    Route::resource('sliding', SlidingController::class)->middleware('can:admin');
     Route::resource('registrant', RegistrantController::class);
     Route::resource('confirmation', ConfirmationController::class);
 });
 Route::get('password_link', function () {
     return view('auth.password_link', ['type_menu' => '']);
-})->name('password_link')->middleware('can:user');
+})->name('password_link');
 
 //Route::get('/sign_in', function () {
 //    //return abort(403);

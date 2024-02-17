@@ -59,7 +59,7 @@
                                     <div class="form-group form-float">
                                         <label>Upload Bukti Pembayaran*</label>
                                         <img id="buktiDisplay" onclick="buktiClick()" src="{{ asset ('images/file.png') }}" class="img-responsive">
-                                        <input id="buktiFile" type="file" name="bukti" onchange="displayBukti(this)" class="thumbnail">
+                                        <input id="buktiFile" type="file" name="bukti" onchange="displayBukti(this)" class="thumbnail" required>
                                     </div>
                                     <p>Format (jpg, jpeg, png, pdf) dan Maksimal Size 2.5 Mb</p>
                                 </div>

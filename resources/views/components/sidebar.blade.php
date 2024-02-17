@@ -81,7 +81,7 @@
             @if (auth()->user()->role=='admin' || auth()->user()->role=='superuser')
             <li class="header">MANAJEMEN TAMPILAN</li>
                 <li class="{{ Request::is('sliding') ? 'active' : '' }}">
-                    <a href="{{ route ('sliding') }}">
+                    <a href="{{ route ('sliding.index') }}">
                         <i class="material-icons">image</i>
                         <span>Sliding Image</span>
                     </a>
