@@ -51,8 +51,8 @@
                         <span>Data Pendaftar</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('previous') ? 'active' : '' }}">
-                    <a href="{{ route ('previous') }}">
+                <li class="{{ Request::is('student') ? 'active' : '' }}">
+                    <a href="{{ route ('student.index') }}">
                         <i class="material-icons">folder_shared</i>
                         <span>Pendaftar Terdahulu</span>
                     </a>
@@ -87,7 +87,7 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('visi') ? 'active' : '' }}">
-                    <a href="{{ route ('visi') }}">
+                    <a href="{{ route ('visi.index') }}">
                         <i class="material-icons">account_balance</i>
                         <span>Visi Misi</span>
                     </a>
@@ -99,31 +99,31 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('beasiswa') ? 'active' : '' }}">
-                    <a href="{{ route ('beasiswa') }}">
+                    <a href="{{ route ('beasiswa.index') }}">
                         <i class="material-icons">school</i>
                         <span>Beasiswa</span>
                     </a>
                 </li>
                 <li class="{{ Request::is('prodi') ? 'active' : '' }}">
-                    <a href="{{ route ('prodi') }}">
+                    <a href="{{ route ('prodi.index') }}">
                         <i class="material-icons">work</i>
                         <span>Prodi</span>
                     </a>
                 </li>
                 <li class="{{ Request::is('biaya') ? 'active' : '' }}">
-                    <a href="{{ route ('biaya') }}">
+                    <a href="{{ route ('biaya.index') }}">
                         <i class="material-icons">monetization_on</i>
                         <span>Biaya</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('fasilitas') ? 'active' : '' }}">
-                    <a href="{{ route ('fasilitas.index') }}">
+                <li class="{{ Request::is('facilities') ? 'active' : '' }}">
+                    <a href="{{ route ('facilities.index') }}">
                         <i class="material-icons">place</i>
                         <span>Fasilitas</span>
                     </a>
                 </li>
                 <li class="{{ Request::is('testimoni') ? 'active' : '' }}">
-                    <a href="{{ route ('testimoni') }}">
+                    <a href="{{ route ('testimoni.index') }}">
                         <i class="material-icons">message</i>
                         <span>Testimoni</span>
                     </a>

@@ -12,7 +12,8 @@ class BeasiswaController extends Controller
      */
     public function index()
     {
-        //
+        $beasiswas = Beasiswa::paginate();
+        return view('apps.beasiswa.index', compact('beasiswas'));
     }
 
     /**
@@ -20,7 +21,7 @@ class BeasiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('apps.beasiswa.add-beasiswa');
     }
 
     /**
@@ -28,7 +29,12 @@ class BeasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Beasiswa::create([
+            'judul'=>$request['judul'],
+            'isi'=>$request['isi'],
+        ]);
+
+        return redirect(route('beasiswa.index'))->with('success', 'Mengunggah Menu Beasiswa Berhasil!');
     }
 
     /**
@@ -44,7 +50,7 @@ class BeasiswaController extends Controller
      */
     public function edit(Beasiswa $beasiswa)
     {
-        //
+        return view('apps.beasiswa.edit-beasiswa')->with('beasiswa', $beasiswa);
     }
 
     /**
@@ -52,7 +58,11 @@ class BeasiswaController extends Controller
      */
     public function update(Request $request, Beasiswa $beasiswa)
     {
-        //
+        $beasiswa->update([
+            'judul'=>$request['judul'],
+            'isi'=>$request['isi'],
+        ]);
+        return redirect(route('beasiswa.index'))->with('success', 'Menu Beasiswa berhasil di Ubah!');
     }
 
     /**
@@ -60,6 +70,7 @@ class BeasiswaController extends Controller
      */
     public function destroy(Beasiswa $beasiswa)
     {
-        //
+        $beasiswa->delete();
+        return redirect(route('prodi.index'))->with('success', 'Menu Prodi berhasil di Hapus!');
     }
 }

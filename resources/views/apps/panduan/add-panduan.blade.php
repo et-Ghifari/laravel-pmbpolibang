@@ -17,7 +17,7 @@
                             <div class="body">
                                 <div class="row">
                                     <div class="form-group form-float">
-                                        <label>Upload Gambar Sliding Image*</label>
+                                        <label>Upload Gambar Menu Panduan*</label>
                                         <img id="buktiDisplay" onclick="buktiClick()" src="{{ asset ('images/file.png') }}" class="img-responsive">
                                         <input id="buktiFile" type="file" name="foto" onchange="displayBukti(this)" class="thumbnail" required height="100px" width="200px">
                                     </div>

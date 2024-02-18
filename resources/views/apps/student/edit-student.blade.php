@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Pendaftar')
+@section('title', 'Terdahulu')
 @push('style')
     <link href="{{ asset ('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>PENDAFTAR</h2>
+            <h2>DATA MAHASISWA</h2>
         </div>
         <div class="row clearfix">
             <div class="col-xs-12 col-sm-4">
@@ -14,11 +14,11 @@
                     <div class="profile-header">&nbsp;</div>
                     <div class="profile-body">
                         <div class="image-area">
-                            <img src="{{ asset('images/profile.jpg') }}" width="100" height="100" alt="{{ $registrant->nama }}" />
+                            <img src="{{ asset('images/profile.jpg') }}" width="100" height="100" alt="{{ $student->nama }}" />
                         </div>
                         <div class="content-area">
-                            <h5>{{ $registrant->nama }}</h5>
-                            <p>{{ $registrant->jalur }}</p>
+                            <h5>{{ $student->nama }}</h5>
+                            <p>{{ $student->jalur }}</p>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                                     Beasiswa
                                 </div>
                                 <div class="content">
-                                    {{ !isset($registrant->beasiswa) ? '-' : $registrant->beasiswa }}
+                                    {{ !isset($student->beasiswa) ? '-' : $student->beasiswa }}
                                 </div>
                             </li>
                             <li>
@@ -43,7 +43,7 @@
                                     Program Studi
                                 </div>
                                 <div class="content">
-                                    {{ $registrant->prodi }}
+                                    {{ $student->prodi }}
                                 </div>
                             </li>
                             <li>
@@ -52,7 +52,7 @@
                                     Kelas
                                 </div>
                                 <div class="content">
-                                    {{ $registrant->kelas }}
+                                    {{ $student->kelas }}
                                 </div>
                             </li>
                             <li>
@@ -61,7 +61,7 @@
                                     Email
                                 </div>
                                 <div class="content">
-                                    {{ $registrant->email }}
+                                    {{ $student->email }}
                                 </div>
                             </li>
                             <li>
@@ -70,7 +70,7 @@
                                     No.Hp/WA
                                 </div>
                                 <div class="content">
-                                    {{ $registrant->nohp }}
+                                    {{ $student->nohp }}
                                 </div>
                             </li>
                         </ul>
@@ -86,19 +86,19 @@
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="informasi">
-                                    <form id="form_validation" method="POST" action="{{ route ('registrant.update', $registrant) }}">
+                                    <form id="form_validation" method="POST" action="{{ route ('student.update', $student) }}">
                                     @csrf
                                     @method('PUT')
                                         <label>JALUR</label>
                                         <div class="form-group form-float">
                                             <div class="demo-radio-button">
-                                                @if ($registrant->jalur == 'Beasiswa')
+                                                @if ($student->jalur == 'Beasiswa')
                                                     <input name="jalur" value="Beasiswa" type="radio" id="radio_7" required checked/>
                                                     <label for="radio_7"><b>BEASISWA</b></label>
                                                     <input name="jalur" value="Mandiri" type="radio" id="radio_8" required />
                                                     <label for="radio_8"><b>MANDIRI</b></label>
                                                 @endif
-                                                @if ($registrant->jalur == 'Mandiri')
+                                                @if ($student->jalur == 'Mandiri')
                                                     <input name="jalur" value="Beasiswa" type="radio" id="radio_7" required />
                                                     <label for="radio_7"><b>BEASISWA</b></label>
                                                     <input name="jalur" value="Mandiri" type="radio" id="radio_8" required checked/>
@@ -109,7 +109,7 @@
                                         <label>BEASISWA</label>
                                         <div class="form-group form-float">
                                             <select name="beasiswa" class="form-control show-tick">
-                                                <option value="{{ $registrant->beasiswa }}">{{ $registrant->beasiswa }}</option>
+                                                <option value="{{ $student->beasiswa }}">{{ $student->beasiswa }}</option>
                                                 <option value="Prestasi Tahfidz">Beasiswa Tahfidz</option>
                                                 <option value="Prestasi Kitab Kuning">Beasiswa Kitab Kuning</option>
                                                 <option value="Prestasi Akademik">Beasiswa Prestasi Akademik</option>
@@ -122,7 +122,7 @@
                                         <label>PROGRAM STUDI</label>
                                         <div class="form-group form-float">
                                             <select name="prodi" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->prodi }}">{{ $registrant->prodi }}</option>
+                                                <option value="{{ $student->prodi }}">{{ $student->prodi }}</option>
                                                 <option value="RPL">D4-Rekayasa Perangkat Lunak</option>
                                                 <option value="ABI">D4-Administrasi Bisnis Internasional</option>
                                                 <option value="AKP">D4-Akutansi Keuangan Publik</option>
@@ -131,7 +131,7 @@
                                         <label>KELAS</label>
                                         <div class="form-group form-float">
                                             <select name="kelas" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->kelas }}">{{ $registrant->kelas }}</option>
+                                                <option value="{{ $student->kelas }}">{{ $student->kelas }}</option>
                                                 <option value="Reguler">Reguler</option>
                                                 <option value="Karyawan">Karyawan</option>
                                             </select>
@@ -139,20 +139,20 @@
                                         <label>NAMA</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="hidden" class="form-control" name="angkatan" placeholder="nama" required autocomplete="off" value="{{ $registrant->angkatan }}"/>
-                                                <input type="text" class="form-control" name="nama" placeholder="nama" required autocomplete="off" value="{{ $registrant->nama }}"/>
+                                                <input type="hidden" class="form-control" name="angkatan" placeholder="nama" required autocomplete="off" value="{{ $student->angkatan }}"/>
+                                                <input type="text" class="form-control" name="nama" placeholder="nama" required autocomplete="off" value="{{ $student->nama }}"/>
                                             </div>
                                         </div>
                                         <label>NISN</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="nisn" placeholder="nisn" maxlength="10" minlength="10" required autocomplete="off" value="{{ $registrant->nisn }}"/>
+                                                <input type="text" class="form-control" name="nisn" placeholder="nisn" maxlength="10" minlength="10" required autocomplete="off" value="{{ $student->nisn }}"/>
                                             </div>
                                         </div>
                                         <label>NIK</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="nik" class="form-control" placeholder="nik" maxlength="16" minlength="16" required autocomplete="off" value="{{ $registrant->nik }}"/>
+                                                <input type="text" name="nik" class="form-control" placeholder="nik" maxlength="16" minlength="16" required autocomplete="off" value="{{ $student->nik }}"/>
                                             </div>
                                         </div>
                                         <label>Tempat Tanggal Lahir</label>
@@ -160,14 +160,14 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" name="tptLahir" class="form-control" placeholder="tempat" required autocomplete="off" value="{{ $registrant->tptLahir }}"/>
+                                                        <input type="text" name="tptLahir" class="form-control" placeholder="tempat" required autocomplete="off" value="{{ $student->tptLahir }}"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="form-group form-float">
                                                     <select name="tglLahir" class="form-control show-tick" required>
-                                                        <option value="{{ $registrant->tglLahir }}">{{ $registrant->tglLahir }}</option>
+                                                        <option value="{{ $student->tglLahir }}">{{ $student->tglLahir }}</option>
                                                         <?php for ($a = 1; $a < 32; $a++) {
                                                         ?>
                                                             <option value="<?php echo $a; ?>"><?php echo $a; ?></option>
@@ -180,7 +180,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group form-float">
                                                     <select name="blnLahir" class="form-control show-tick" required>
-                                                        <option value="{{ $registrant->blnLahir }}">{{ $registrant->blnLahir }}</option>
+                                                        <option value="{{ $student->blnLahir }}">{{ $student->blnLahir }}</option>
                                                         <option value="Januari">Januari</option>
                                                         <option value="Februari">Februari</option>
                                                         <option value="Maret">Maret</option>
@@ -199,7 +199,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group form-float">
                                                     <select name="thnLahir" class="form-control show-tick" required>
-                                                        <option value="{{ $registrant->thnLahir }}">{{ $registrant->thnLahir }}</option>
+                                                        <option value="{{ $student->thnLahir }}">{{ $student->thnLahir }}</option>
                                                         <?php $th = date('Y') - 30; ?>
                                                         <?php for ($th; $th <= date('Y'); $th++) {
                                                         ?>
@@ -214,52 +214,52 @@
                                         <label>Provinsi</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="provinsi" class="form-control" placeholder="provinsi" required autocomplete="off" value="{{ $registrant->provinsi }}"/>
+                                                <input type="text" name="provinsi" class="form-control" placeholder="provinsi" required autocomplete="off" value="{{ $student->provinsi }}"/>
                                             </div>
                                         </div>
                                         <label>Kabupaten</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="kabupaten" class="form-control" placeholder="kabupaten" required autocomplete="off" value="{{ $registrant->kabupaten }}"/>
+                                                <input type="text" name="kabupaten" class="form-control" placeholder="kabupaten" required autocomplete="off" value="{{ $student->kabupaten }}"/>
                                             </div>
                                         </div>
                                         <label>Kecamatan</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="kecamatan" class="form-control" placeholder="kecamatan" required autocomplete="off" value="{{ $registrant->kecamatan }}"/>
+                                                <input type="text" name="kecamatan" class="form-control" placeholder="kecamatan" required autocomplete="off" value="{{ $student->kecamatan }}"/>
                                             </div>
                                         </div>
                                         <label>Desa</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="desa" class="form-control" placeholder="desa" required autocomplete="off" value="{{ $registrant->desa }}"/>
+                                                <input type="text" name="desa" class="form-control" placeholder="desa" required autocomplete="off" value="{{ $student->desa }}"/>
                                             </div>
                                         </div>
                                         <label>Jl/No.Rumah/dll</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <textarea type="text" name="jalan" class="form-control" placeholder="Jl./No.Rumah/dll" autocomplete="off" value="{{ !isset($registrant->jalan) ? '-' : $registrant->jalan }}"></textarea>
+                                                <textarea type="text" name="jalan" class="form-control" placeholder="Jl./No.Rumah/dll" autocomplete="off" value="{{ !isset($student->jalan) ? '-' : $registrant->jalan }}"></textarea>
                                             </div>
                                         </div>
                                         <div class="row clearfix">
                                             <div class="col-sm-2">
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" name="rt" class="form-control" placeholder="RT" required autocomplete="off" value="{{ $registrant->rt }}"/>
+                                                        <input type="text" name="rt" class="form-control" placeholder="RT" required autocomplete="off" value="{{ $student->rt }}"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-2">
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" name="rw" class="form-control" placeholder="RW" required autocomplete="off" value="{{ $registrant->rw }}"/>
+                                                        <input type="text" name="rw" class="form-control" placeholder="RW" required autocomplete="off" value="{{ $student->rw }}"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-2">
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" name="kodepos" class="form-control" placeholder="Kode Pos" maxlength="5" minlength="5" required autocomplete="off" value="{{ $registrant->kodepos }}"/>
+                                                        <input type="text" name="kodepos" class="form-control" placeholder="Kode Pos" maxlength="5" minlength="5" required autocomplete="off" value="{{ $student->kodepos }}"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -267,25 +267,25 @@
                                         <label>NO HP/WA</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="nohp" placeholder="no hp/wa" required autocomplete="off" value="{{ $registrant->nohp }}"/>
+                                                <input type="text" class="form-control" name="nohp" placeholder="no hp/wa" required autocomplete="off" value="{{ $student->nohp }}"/>
                                             </div>
                                         </div>
                                         <label>EMAIL</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="email" placeholder="alamat email" required autocomplete="off" value="{{ $registrant->email }}"/>
+                                                <input type="text" class="form-control" name="email" placeholder="alamat email" required autocomplete="off" value="{{ $student->email }}"/>
                                             </div>
                                         </div>
                                         <label>Jenis Kelamin*</label>
                                             <div class="form-group form-float">
                                                 <div class="demo-radio-button">
-                                                    @if ($registrant->jk == 'L')
+                                                    @if ($student->jk == 'L')
                                                         <input name="jk" value="L" type="radio" id="radio_9" required checked/>
                                                         <label for="radio_9">Laki - Laki</label>
                                                         <input name="jk" value="P" type="radio" id="radio_10" required />
                                                         <label for="radio_10">Perempuan</label>
                                                     @endif
-                                                    @if ($registrant->jk == 'P')
+                                                    @if ($student->jk == 'P')
                                                         <input name="jk" value="L" type="radio" id="radio_9" required />
                                                         <label for="radio_9">Laki - Laki</label>
                                                         <input name="jk" value="P" type="radio" id="radio_10" required checked/>
@@ -296,7 +296,7 @@
                                         <label>Ukuran Jas</label>
                                         <div class="form-group form-float">
                                             <div class="demo-radio-button">
-                                                @if ($registrant->jas == 'S')
+                                                @if ($student->jas == 'S')
                                                     <input name="jas" value="S" type="radio" id="radio_3" required checked/>
                                                     <label for="radio_3">S</label>
                                                     <input name="jas" value="M" type="radio" id="radio_4" required />
@@ -310,7 +310,7 @@
                                                     <input name="jas" value="XXXL" type="radio" id="radio_8" required />
                                                     <label for="radio_8">XXXL</label>
                                                 @endif
-                                                @if ($registrant->jas == 'M')
+                                                @if ($student->jas == 'M')
                                                     <input name="jas" value="S" type="radio" id="radio_3" required />
                                                     <label for="radio_3">S</label>
                                                     <input name="jas" value="M" type="radio" id="radio_4" required checked/>
@@ -324,7 +324,7 @@
                                                     <input name="jas" value="XXXL" type="radio" id="radio_8" required />
                                                     <label for="radio_8">XXXL</label>
                                                 @endif
-                                                @if ($registrant->jas == 'L')
+                                                @if ($student->jas == 'L')
                                                     <input name="jas" value="S" type="radio" id="radio_3" required />
                                                     <label for="radio_3">S</label>
                                                     <input name="jas" value="M" type="radio" id="radio_4" required />
@@ -338,7 +338,7 @@
                                                     <input name="jas" value="XXXL" type="radio" id="radio_8" required />
                                                     <label for="radio_8">XXXL</label>
                                                 @endif
-                                                @if ($registrant->jas == 'XL')
+                                                @if ($student->jas == 'XL')
                                                     <input name="jas" value="S" type="radio" id="radio_3" required />
                                                     <label for="radio_3">S</label>
                                                     <input name="jas" value="M" type="radio" id="radio_4" required />
@@ -352,7 +352,7 @@
                                                     <input name="jas" value="XXXL" type="radio" id="radio_8" required />
                                                     <label for="radio_8">XXXL</label>
                                                 @endif
-                                                @if ($registrant->jas == 'XXL')
+                                                @if ($student->jas == 'XXL')
                                                     <input name="jas" value="S" type="radio" id="radio_3" required />
                                                     <label for="radio_3">S</label>
                                                     <input name="jas" value="M" type="radio" id="radio_4" required />
@@ -366,7 +366,7 @@
                                                     <input name="jas" value="XXXL" type="radio" id="radio_8" required />
                                                     <label for="radio_8">XXXL</label>
                                                 @endif
-                                                @if ($registrant->jas == 'XXXL')
+                                                @if ($student->jas == 'XXXL')
                                                     <input name="jas" value="S" type="radio" id="radio_3" required />
                                                     <label for="radio_3">S</label>
                                                     <input name="jas" value="M" type="radio" id="radio_4" required />
@@ -385,43 +385,43 @@
                                         <label>Anak-ke</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="anak" class="form-control" placeholder="anak-ke" autocomplete="off" value="{{ !isset($registrant->anak) ? '-' : $registrant->anak }}"/>
+                                                <input type="text" name="anak" class="form-control" placeholder="anak-ke" autocomplete="off" value="{{ !isset($student->anak) ? '-' : $student->anak }}"/>
                                             </div>
                                         </div>
                                         <label>Jumlah Saudara</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="saudara" class="form-control" placeholder="jumlah saudara" autocomplete="off" value="{{ !isset($registrant->saudara) ? '-' : $registrant->saudara }}"/>
+                                                <input type="text" name="saudara" class="form-control" placeholder="jumlah saudara" autocomplete="off" value="{{ !isset($student->saudara) ? '-' : $student->saudara }}"/>
                                             </div>
                                         </div>
                                         <label>Berat Badan</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="berat" class="form-control" placeholder="berat badan" autocomplete="off" value="{{ !isset($registrant->berat) ? '-' : $registrant->berat }}"/>
+                                                <input type="text" name="berat" class="form-control" placeholder="berat badan" autocomplete="off" value="{{ !isset($student->berat) ? '-' : $student->berat }}"/>
                                             </div>
                                         </div>
                                         <label>Tinggi Badan</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="tinggi" class="form-control" placeholder="tinggi badan" autocomplete="off" value="{{ !isset($registrant->tinggi) ? '-' : $registrant->tinggi }}"/>
+                                                <input type="text" name="tinggi" class="form-control" placeholder="tinggi badan" autocomplete="off" value="{{ !isset($student->tinggi) ? '-' : $student->tinggi }}"/>
                                             </div>
                                         </div>
                                         <label>Asal Sekolah</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="sekolah" class="form-control" placeholder="asal sekolah" autocomplete="off" value="{{ $registrant->sekolah }}"/>
+                                                <input type="text" name="sekolah" class="form-control" placeholder="asal sekolah" autocomplete="off" value="{{ $student->sekolah }}"/>
                                             </div>
                                         </div>
                                         <label>SKHUN</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="skhun" class="form-control" placeholder="skhun" autocomplete="off" value="{{ !isset($registrant->skhun) ? '-' : $registrant->skhun }}"/>
+                                                <input type="text" name="skhun" class="form-control" placeholder="skhun" autocomplete="off" value="{{ !isset($student->skhun) ? '-' : $student->skhun }}"/>
                                             </div>
                                         </div>
                                         <label>Tahun Lulus</label>
                                         <div class="form-group form-float">
                                             <select name="lulus" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->lulus }}">{{ $registrant->lulus }}</option>
+                                                <option value="{{ $student->lulus }}">{{ $student->lulus }}</option>
                                                 <?php $th = date('Y') - 30; ?>
                                                 <?php for ($th; $th <= date('Y'); $th++) {
                                                 ?>
@@ -434,25 +434,25 @@
                                         <label>Nomor KK</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="kk" class="form-control" placeholder="nomor kk" maxlength="16" minlength="16" required autocomplete="off" value="{{ $registrant->kk }}"/>
+                                                <input type="text" name="kk" class="form-control" placeholder="nomor kk" maxlength="16" minlength="16" required autocomplete="off" value="{{ $student->kk }}"/>
                                             </div>
                                         </div>
                                         <label>NIK Ayah</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="nikAyah" class="form-control" placeholder="nik ayah" maxlength="16" minlength="16" required autocomplete="off" value="{{ $registrant->nikAyah }}"/>
+                                                <input type="text" name="nikAyah" class="form-control" placeholder="nik ayah" maxlength="16" minlength="16" required autocomplete="off" value="{{ $student->nikAyah }}"/>
                                             </div>
                                         </div>
                                         <label>Nama Ayah</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="namaAyah" class="form-control" placeholder="nama ayah" autocomplete="off" value="{{ $registrant->namaAyah }}"/>
+                                                <input type="text" name="namaAyah" class="form-control" placeholder="nama ayah" autocomplete="off" value="{{ $student->namaAyah }}"/>
                                             </div>
                                         </div>
                                         <label>Pekerjaan Ayah</label>
                                         <div class="form-group form-float">
                                             <select name="pekerjaanA" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->pekerjaanA }}">{{ $registrant->pekerjaanA }}</option>
+                                                <option value="{{ $student->pekerjaanA }}">{{ $student->pekerjaanA }}</option>
                                                 <option value="Buruh">Buruh</option>
                                                 <option value="Dosen">Dosen</option>
                                                 <option value="Guru">Guru</option>
@@ -469,7 +469,7 @@
                                         <label>Pendidikan Ayah</label>
                                         <div class="form-group form-float">
                                             <select name="pendidikanA" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->pendidikanA }}">{{ $registrant->pendidikanA }}</option>
+                                                <option value="{{ $student->pendidikanA }}">{{ $student->pendidikanA }}</option>
                                                 <option value="SD/MI">SD/MI</option>
                                                 <option value="SMP/MTs">SMP/MTs</option>
                                                 <option value="SMA/SMK/MA">SMA/SMK/MA</option>
@@ -485,19 +485,19 @@
                                         <label>NIK Ibu</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="nikIbu" class="form-control" placeholder="nik ibu" maxlength="16" minlength="16" required autocomplete="off" value="{{ $registrant->nikIbu }}"/>
+                                                <input type="text" name="nikIbu" class="form-control" placeholder="nik ibu" maxlength="16" minlength="16" required autocomplete="off" value="{{ $student->nikIbu }}"/>
                                             </div>
                                         </div>
                                         <label>Nama Ibu*</label>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="namaIbu" class="form-control" placeholder="nama ibu" required autocomplete="off" value="{{ $registrant->namaIbu }}"/>
+                                                    <input type="text" name="namaIbu" class="form-control" placeholder="nama ibu" required autocomplete="off" value="{{ $student->namaIbu }}"/>
                                                 </div>
                                             </div>
                                         <label>Pekerjaan Ibu</label>
                                         <div class="form-group form-float">
                                             <select name="pekerjaanI" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->pekerjaanI }}">{{ $registrant->pekerjaanI }}</option>
+                                                <option value="{{ $student->pekerjaanI }}">{{ $student->pekerjaanI }}</option>
                                                 <option value="Buruh">Buruh</option>
                                                 <option value="Dosen">Dosen</option>
                                                 <option value="Guru">Guru</option>
@@ -514,7 +514,7 @@
                                         <label>Pendidikan Ibu</label>
                                         <div class="form-group form-float">
                                             <select name="pendidikanI" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->pendidikanI }}">{{ $registrant->pendidikanI }}</option>
+                                                <option value="{{ $student->pendidikanI }}">{{ $student->pendidikanI }}</option>
                                                 <option value="SD/MI">SD/MI</option>
                                                 <option value="SMP/MTs">SMP/MTs</option>
                                                 <option value="SMA/SMK/MA">SMA/SMK/MA</option>
@@ -530,7 +530,7 @@
                                         <label>Penghasilan Orang Tua</label>
                                         <div class="form-group form-float">
                                             <select name="penghasilan" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->penghasilan }}">{{ $registrant->penghasilan }}</option>
+                                                <option value="{{ $student->penghasilan }}">{{ $student->penghasilan }}</option>
                                                 <option value="< 500.000">< 500.000</option>
                                                 <option value="500.000 - 1.000.000">500.000 - 1.000.000</option>
                                                 <option value="1.000.000 - 2.000.000">1.000.000 - 2.000.000</option>
@@ -542,13 +542,13 @@
                                         <label>Cabang Lomba</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="lomba" class="form-control" placeholder="cabang lomba" autocomplete="off" value="{{ !isset($registrant->lomba) ? '-' : $registrant->lomba }}"/>
+                                                <input type="text" name="lomba" class="form-control" placeholder="cabang lomba" autocomplete="off" value="{{ !isset($student->lomba) ? '-' : $student->lomba }}"/>
                                             </div>
                                         </div>
                                         <label>Tingkat Lomba</label>
                                         <div class="form-group form-float">
                                             <select name="tingkat" class="form-control show-tick">
-                                                <option value="{{ $registrant->tingkat }}">{{ $registrant->tingkat }}</option>
+                                                <option value="{{ $student->tingkat }}">{{ $student->tingkat }}</option>
                                                 <option value="Kecamatan">Kecamatan</option>
                                                 <option value="Kabupaten">Kabupaten</option>
                                                 <option value="Provinsi">Provinsi</option>
@@ -559,7 +559,7 @@
                                         <label>Peringkat Lomba</label>
                                         <div class="form-group form-float">
                                             <select name="peringkat" class="form-control show-tick">
-                                                <option value="{{ $registrant->peringkat }}">{{ $registrant->peringkat }}</option>
+                                                <option value="{{ $student->peringkat }}">{{ $student->peringkat }}</option>
                                                 <option value="Juara I">Juara I</option>
                                                 <option value="Juara II">Juara II</option>
                                                 <option value="Juara III">Juara III</option>
@@ -569,13 +569,13 @@
                                         <label>Tahun Lomba</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="tahun" class="form-control" placeholder="tahun lomba" autocomplete="off" value="{{ !isset($registrant->tahun) ? '-' : $registrant->tahun }}"/>
+                                                <input type="text" name="tahun" class="form-control" placeholder="tahun lomba" autocomplete="off" value="{{ !isset($student->tahun) ? '-' : $student->tahun }}"/>
                                             </div>
                                         </div>
                                         <label>Organisasi Masyarakat Orang Tua/Wali</label>
                                         <div class="form-group form-float">
                                             <select name="organisasi" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->organisasi }}">{{ $registrant->organisasi }}</option>
+                                                <option value="{{ $student->organisasi }}">{{ $student->organisasi }}</option>
                                                 <option value="NU">NU</option>
                                                 <option value="Muhammadiyah">Muhammadiyah</option>
                                                 <option value="PERSIS">PERSIS</option>
@@ -585,7 +585,7 @@
                                         <label>Keadaan Calon Mahasiswa</label>
                                         <div class="form-group form-float">
                                             <select name="keadaan" class="form-control show-tick" required>
-                                                <option value="{{ $registrant->keadaan }}">{{ $registrant->keadaan }}</option>
+                                                <option value="{{ $student->keadaan }}">{{ $student->keadaan }}</option>
                                                 <option value="Lengkap">Lengkap</option>
                                                 <option value="Yatim">Yatim</option>
                                                 <option value="Piatu">Piatu</option>
@@ -595,7 +595,7 @@
                                         <label>Sumber Informasi</label>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" name="sumber" class="form-control" placeholder="tahun lomba" autocomplete="off" value="{{ !isset($registrant->sumber) ? '-' : $registrant->sumber }}"/>
+                                                <input type="text" name="sumber" class="form-control" placeholder="tahun lomba" autocomplete="off" value="{{ !isset($student->sumber) ? '-' : $student->sumber }}"/>
                                             </div>
                                         </div>
                                         @if (auth()->user()->role == 'superuser' || auth()->user()->role == 'admin')

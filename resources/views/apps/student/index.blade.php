@@ -6,7 +6,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>DATA PENDAFTAR TERDAHULU</h2>
+            <h2>DATA PENDAFTAR</h2>
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -14,21 +14,27 @@
                     <div class="header">
                         <div class="row clearfix">
                             <div class="col-xs-12 col-sm-6">
-                                <h2>Data Calon Mahasiswa Terdahulu</h2>
+                                <h2>Data Mahasiswa</h2>
                             </div>
                             <div class="col-xs-12 col-sm-6 align-right">
                                 <div class="switch panel-switch-btn">
-                                    <a type="button" href="{{ url ('previous') }}" class="btn btn-default waves-effect" data-toggle="tooltip" data-placement="bottom" title="Perbarui"><i class="material-icons">refresh</i></a>
+                                    <a type="button" href="{{ url ('student') }}" class="btn btn-default waves-effect" data-toggle="tooltip" data-placement="bottom" title="Perbarui"><i class="material-icons">refresh</i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="body">
+                        <div class="row">
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    @include('layouts.alert')
+                                </div>
+                            </div>
                         <div class="table">
                             <table class="table table-bordered table-striped table-hover js-basic-example">
                                 <thead>
                                     <tr>
-                                        <th class="col-sm-1">NO.</th>
+                                        <th class="col-sm-1">ANGKATAN</th>
                                         <th class="col-sm-1">JALUR</th>
                                         <th class="col-sm-3">NAMA LENGKAP</th>
                                         <th class="col-sm-3">ALAMAT EMAIL</th>
@@ -37,16 +43,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($students as $student)
                                     <tr>
-                                        <td>PMB202300003</td>
-                                        <td>BEASISWA</td>
-                                        <td>NIA PUSPITA SARI</td>
-                                        <td>niap9556@gmail.com</td>
-                                        <td>+62 895-3609-74369</td>
+                                        <td>{{ $student->angkatan }}</td>
+                                        <td>{{ $student->jalur }}</td>
+                                        <td>{{ $student->nama }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->nohp }}</td>
                                         <td class="align-center">
-                                            <a href="" class="btn bg-cyan waves-effect" data-toggle="tooltip" data-placement="left" title="Review"><i class="material-icons">visibility</i></a>
+                                            @if (auth()->user()->role == 'superuser' || auth()->user()->role == 'admin')
+                                                <a href="{{ route ('student.edit', $student->id) }}" class="btn bg-cyan waves-effect" data-toggle="tooltip" data-placement="left" title="Review"><i class="material-icons">visibility</i></a>
+                                            @endif
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -67,4 +77,6 @@
     <script src="{{ asset ('plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
     <script src="{{ asset ('plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
     <script src="{{ asset ('js/pages/tables/jquery-datatable.js') }}"></script>
+    <script src="{{ asset ('js/pages/index.js') }}"></script>
+    <script src="{{ asset ('plugins/jquery-countto/jquery.countTo.js') }}"></script>
 @endpush

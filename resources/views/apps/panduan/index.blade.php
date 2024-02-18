@@ -13,15 +13,19 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>
-                            Manajemen Menu Panduan
-                        </h2>
-                        <ul class="header-dropdown m-r--5">
-                            <a href="{{ route ('panduan.create') }}" class="btn bg-green waves-effect">
-                                <i class="material-icons">add_circle_outline</i>
-                                <span>TAMBAH</span>
-                            </a>
-                        </ul>
+                        <div class="row clearfix">
+                            <div class="col-xs-12 col-sm-6">
+                                <h2>Data Biaya</h2>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 align-right">
+                                <div class="switch panel-switch-btn">
+                                    <a href="{{ route ('panduan.create') }}" class="btn bg-green waves-effect">
+                                        <i class="material-icons">add_circle_outline</i>
+                                        <span>TAMBAH</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="body">
                         <div class="row clearfix">

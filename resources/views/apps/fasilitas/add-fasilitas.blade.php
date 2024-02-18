@@ -3,25 +3,37 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>SLIDING IMAGE</h2>
+            <h2>MENU FASILITAS</h2>
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Tambah Sliding Image</h2>
+                        <h2>Tambah Menu Fasilitas</h2>
                     </div>
                     <div class="body">
-                        <form id="form_validation" action="{{ route ('sliding.store') }}" method="POST" enctype="multipart/form-data">
+                        <form id="form_validation" action="{{ route ('facilities.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="body">
                                 <div class="row">
                                     <div class="form-group form-float">
-                                        <label>Upload Gambar Sliding Image*</label>
+                                        <label>Upload Gambar Menu Fasilitas*</label>
                                         <img id="buktiDisplay" onclick="buktiClick()" src="{{ asset ('images/file.png') }}" class="img-responsive">
                                         <input id="buktiFile" type="file" name="foto" onchange="displayBukti(this)" class="thumbnail" required height="100px" width="200px">
                                     </div>
                                     <p>Format (jpg, jpeg, png, pdf) dan Maksimal Size 2.5 Mb</p>
+                                    <label>Judul</label>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="judul" placeholder="judul" required autocomplete="off" required/>
+                                        </div>
+                                    </div>
+                                    <label>Keterangan</label>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <textarea rows="4" type="text" class="form-control no-resize" name="keterangan" placeholder="keterangan" autocomplete="off" required></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group align-center">

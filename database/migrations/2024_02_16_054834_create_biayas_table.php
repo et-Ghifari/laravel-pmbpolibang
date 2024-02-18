@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('biayas', function (Blueprint $table) {
             $table->id();
             $table->string('judul', 128);
+            $table->bigInteger('total');
             $table->bigInteger('sumbangan');
             $table->bigInteger('semester');
             $table->bigInteger('jas');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->bigInteger('bulanan');
             $table->bigInteger('almari');
             $table->bigInteger('loundry');
+            $table->string('class')->nullable();
             $table->timestamps();
         });
     }

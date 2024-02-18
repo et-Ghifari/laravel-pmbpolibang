@@ -1,38 +1,44 @@
 @extends('layouts.app')
-@section('title', 'Fasilitas')
+@section('title', 'Testimoni')
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>MENU FASILITAS</h2>
+            <h2>MENU TESTIMONI</h2>
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Ubah Menu Failitas</h2>
+                        <h2>Ubah Menu Testimoni</h2>
                     </div>
                     <div class="body">
-                        <form id="form_validation" action="{{ route ('facilities.update', $facility) }}" method="POST" enctype="multipart/form-data">
+                        <form id="form_validation" action="{{ route ('testimoni.update', $testimoni) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="body">
                                 <div class="row">
                                     <div class="form-group form-float">
-                                        <label>Upload Gambar Menu Failitas*</label>
-                                        <img id="buktiDisplay" onclick="buktiClick()" src="{{ !empty($facility->foto) ? asset ('storage/fasilitas/'.$facility->foto) : asset ('images/file.png') }}" class="img-responsive">
-                                        <input id="buktiFile" type="file" name="foto" onchange="displayBukti(this)" class="thumbnail" height="100px" width="200px" required>
+                                        <label>Upload Gambar Menu Testimoni*</label>
+                                        <img id="buktiDisplay" onclick="buktiClick()" src="{{ !empty($testimoni->foto) ? asset ('storage/testimoni/'.$testimoni->foto) : asset ('images/file.png') }}" class="img-responsive">
+                                        <input id="buktiFile" type="file" name="foto" onchange="displayBukti(this)" class="thumbnail" required height="100px" width="200px">
                                     </div>
                                     <p>Format (jpg, jpeg, png, pdf) dan Maksimal Size 2.5 Mb</p>
-                                    <label>Judul</label>
+                                    <label>Nama</label>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="judul" placeholder="judul" autocomplete="off" value="{{ $facility->judul }}" required/>
+                                            <input type="text" class="form-control" name="nama" placeholder="nama" required autocomplete="off" value="{{ $testimoni->nama }}" required/>
                                         </div>
                                     </div>
-                                    <label>Keterangan</label>
+                                    <label>Jabatan</label>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <textarea rows="4" type="text" class="form-control no-resize" name="keterangan" placeholder="keterangan" autocomplete="off" required >{{ $facility->keterangan }}</textarea>
+                                            <input type="text" class="form-control" name="jabatan" placeholder="jabatan" required autocomplete="off" value="{{ $testimoni->jabatan }}" required/>
+                                        </div>
+                                    </div>
+                                    <label>Isi</label>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <textarea rows="4" type="text" class="form-control no-resize" name="isi" placeholder="isi" required autocomplete="off" required>{{ $testimoni->isi }}</textarea>
                                         </div>
                                     </div>
                                 </div>

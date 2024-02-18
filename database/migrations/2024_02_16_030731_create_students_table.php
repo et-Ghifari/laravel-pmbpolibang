@@ -60,7 +60,7 @@ return new class extends Migration
             $table->string('tahun', 8)->nullable();
             $table->string('organisasi', 128);
             $table->string('keadaan', 128);
-            $table->string('sumber', 128);
+            $table->string('sumber', 128)->nullable();
             $table->timestamps();
         });
     }

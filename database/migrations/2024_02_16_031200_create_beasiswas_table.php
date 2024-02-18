@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('beasiswas', function (Blueprint $table) {
             $table->id();
-            $table->string('ikon', 128);
             $table->string('judul', 128);
             $table->text('isi');
             $table->timestamps();

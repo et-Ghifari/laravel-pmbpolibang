@@ -10,6 +10,7 @@ class Biaya extends Model
     use HasFactory;
     protected $fillable = [
         'judul',
+        'total',
         'sumbangan',
         'semester',
         'jas',
@@ -18,5 +19,6 @@ class Biaya extends Model
         'bulanan',
         'almari',
         'loundry',
+        'class',
     ];
 }

@@ -9,7 +9,6 @@ class Beasiswa extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'ikon',
         'judul',
         'isi',
     ];

@@ -46,7 +46,7 @@ class SlidingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(String $id)
+    public function show(Sliding $sliding)
     {
 
     }

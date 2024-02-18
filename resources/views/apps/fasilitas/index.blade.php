@@ -13,28 +13,33 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>
-                            Manajemen Menu Fasilitas
-                        </h2>
-                        <ul class="header-dropdown m-r--5">
-                            <a href="{{ route ('fasilitas.create') }}" class="btn bg-green waves-effect">
-                                <i class="material-icons">add_circle_outline</i>
-                                <span>TAMBAH</span>
-                            </a>
-                        </ul>
+                        <div class="row clearfix">
+                            <div class="col-xs-12 col-sm-6">
+                                <h2>Data Fasilitas</h2>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 align-right">
+                                <div class="switch panel-switch-btn">
+                                    <a href="{{ route ('facilities.create') }}" class="btn bg-green waves-effect">
+                                        <i class="material-icons">add_circle_outline</i>
+                                        <span>TAMBAH</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="body">
                         <div class="row clearfix">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 @include('layouts.alert')
                             </div>
-                            @foreach ($fasilitas as $fasilita)
+                            @foreach ($facilities as $facility)
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <img class="img-responsive thumbnail" src="{{ asset ('storage/sliding/'.$fasilita->foto) }}" height="150px" width="300px">
-                                <h4>{{ $fasilita->judul }}</h4>
-                                <span>{{ $fasilita->keterangan }}</span>
-                                <a href="{{ route ('fasilitas.edit', $fasilita->id) }}" class="btn bg-cyan waves-effect"><i class="material-icons">edit</i></a>
-                                <form action="{{ route ('fasilitas.destroy', $fasilita->id) }}" method="POST">
+                                <img class="img-responsive thumbnail" src="{{ asset ('storage/fasilitas/'.$facility->foto) }}" height="150px" width="300px">
+                                <h4>{{ $facility->judul }}</h4>
+                                <span>{{ $facility->keterangan }}</span>
+                                <br></br>
+                                <a href="{{ route ('facilities.edit', $facility->id) }}" class="btn bg-cyan waves-effect"><i class="material-icons">edit</i></a>
+                                <form action="{{ route ('facilities.destroy', $facility->id) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button class="btn btn-danger waves-effect" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="material-icons">delete_forever</i></button>

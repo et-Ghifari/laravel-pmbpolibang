@@ -12,7 +12,8 @@ class BiayaController extends Controller
      */
     public function index()
     {
-        //
+        $biayas = Biaya::paginate();
+        return view('apps.biaya.index', compact('biayas'));
     }
 
     /**
@@ -44,7 +45,7 @@ class BiayaController extends Controller
      */
     public function edit(Biaya $biaya)
     {
-        //
+        return view('apps.biaya.edit-biaya')->with('biaya', $biaya);
     }
 
     /**
@@ -52,7 +53,20 @@ class BiayaController extends Controller
      */
     public function update(Request $request, Biaya $biaya)
     {
-        //
+        $biaya->update([
+            'judul'=>$request['judul'],
+            'total'=>$request['total'],
+            'sumbangan'=>$request['sumbangan'],
+            'semester'=>$request['semester'],
+            'jas'=>$request['jas'],
+            'posma'=>$request['posma'],
+            'sarung'=>$request['sarung'],
+            'bulanan'=>$request['bulanan'],
+            'almari'=>$request['almari'],
+            'loundry'=>$request['loundry'],
+            'class'=>$request['class'],
+        ]);
+        return redirect(route('biaya.index'))->with('success', 'Menu Biaya berhasil di Ubah!');
     }
 
     /**
