@@ -93,7 +93,7 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('panduan') ? 'active' : '' }}">
-                    <a href="{{ route ('panduan') }}">
+                    <a href="{{ route ('panduan.index') }}">
                         <i class="material-icons">book</i>
                         <span>Panduan</span>
                     </a>

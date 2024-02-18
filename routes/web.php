@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrantController;
 use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\SlidingController;
+use App\Http\Controllers\PanduanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ use App\Http\Controllers\SlidingController;
 */
 
 Route::get('/', function () {
-    return view('welcome', ['type_menu' => '']);
+    return view('apps.pmb', ['type_menu' => '']);
 });
 
 Route::middleware(['auth', 'verified'])->group(function(){
@@ -119,6 +120,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::resource('user', UserController::class)->middleware('can:super');
     Route::resource('sliding', SlidingController::class)->middleware('can:admin');
+    Route::resource('panduan', PanduanController::class)->middleware('can:admin');
     Route::resource('registrant', RegistrantController::class);
     Route::resource('confirmation', ConfirmationController::class);
 });

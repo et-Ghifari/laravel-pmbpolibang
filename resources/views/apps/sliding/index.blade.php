@@ -28,14 +28,15 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 @include('layouts.alert')
                             </div>
-                        </div>
-                        <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
                             @foreach ($slidings as $sliding)
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                <a href="{{ asset ('storage/sliding/'.$sliding->foto) }}" data-sub-html="Demo Description">
-                                    <img class="img-responsive thumbnail" src="{{ asset ('storage/sliding/'.$sliding->foto) }}" height="100px" width="200px">
-                                </a>
-                                <a href="{{ route ('sliding.edit', $sliding->id) }}" class="btn bg-cyan waves-effect " title="Edit User"><i class="material-icons">edit</i></a>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <img class="img-responsive thumbnail" src="{{ asset ('storage/sliding/'.$sliding->foto) }}" height="150px" width="300px">
+                                <a href="{{ route ('sliding.edit', $sliding->id) }}" class="btn bg-cyan waves-effect"><i class="material-icons">edit</i></a>
+                                <form action="{{ route ('sliding.destroy', $sliding->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="btn btn-danger waves-effect" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="material-icons">delete_forever</i></button>
+                                </form>
                             </div>
                             @endforeach
                         </div>
@@ -46,6 +47,5 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="{{ asset ('plugins/light-gallery/js/lightgallery-all.js') }}"></script>
-    <script src="{{ asset ('js/pages/medias/image-gallery.js') }}"></script>
+
 @endpush

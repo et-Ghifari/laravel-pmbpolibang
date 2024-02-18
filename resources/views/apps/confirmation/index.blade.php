@@ -44,8 +44,6 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($confirmations as $index=>$confirmation)
-
-                                    @endforeach
                                     <tr>
                                         <td>{{ $index + $confirmations->firstItem() }}</td>
                                         <td>{{ $confirmation->nama }}</td>
@@ -66,6 +64,7 @@
                                             @endif
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

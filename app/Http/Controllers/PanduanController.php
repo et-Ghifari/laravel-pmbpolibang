@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Panduan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PanduanController extends Controller
 {
@@ -12,7 +13,8 @@ class PanduanController extends Controller
      */
     public function index()
     {
-        //
+        $panduans = Panduan::paginate();
+        return view('apps.panduan.index', compact('panduans'));
     }
 
     /**
@@ -20,7 +22,7 @@ class PanduanController extends Controller
      */
     public function create()
     {
-        //
+        return view('apps.panduan.add-panduan');
     }
 
     /**
@@ -28,7 +30,17 @@ class PanduanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'foto'     => 'required|image|mimes:jpeg,jpg,png',
+        ]);
+        $image = $request->file('foto');
+        $image->storeAs('public/panduan', $image->hashName());
+
+        Panduan::create([
+            'foto'=>$image->hashName(),
+        ]);
+
+        return redirect(route('panduan.index'))->with('success', 'Mengunggah Menu Panduan Berhasil!');
     }
 
     /**
@@ -44,7 +56,7 @@ class PanduanController extends Controller
      */
     public function edit(Panduan $panduan)
     {
-        //
+        return view('apps.panduan.edit-panduan')->with('panduan', $panduan);
     }
 
     /**
@@ -52,7 +64,18 @@ class PanduanController extends Controller
      */
     public function update(Request $request, Panduan $panduan)
     {
-        //
+        $this->validate($request, [
+            'foto'     => 'required|image|mimes:jpeg,jpg,png',
+        ]);
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $image->storeAs('public/panduan', $image->hashName());
+            Storage::delete('public/panduan/'.$panduan->foto);
+            $panduan->update([
+                'foto'=>$image->hashName(),
+            ]);
+            return redirect(route('panduan.index'))->with('success', 'Menu Panduan berhasil di Ubah!');
+        }
     }
 
     /**
@@ -60,6 +83,8 @@ class PanduanController extends Controller
      */
     public function destroy(Panduan $panduan)
     {
-        //
+        Storage::delete('public/panduan/'.$panduan->foto);
+        $panduan->delete();
+        return redirect(route('panduan.index'))->with('success', 'Menu Panduan berhasil di Hapus!');
     }
 }

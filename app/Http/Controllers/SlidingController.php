@@ -46,9 +46,9 @@ class SlidingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sliding $sliding)
+    public function show(String $id)
     {
-        return view('welcome', ['sliding' => $sliding]);
+
     }
 
     /**
@@ -67,13 +67,15 @@ class SlidingController extends Controller
         $this->validate($request, [
             'foto'     => 'required|image|mimes:jpeg,jpg,png',
         ]);
-        $image = $request->file('foto');
-        $image->storeAs('public/sliding', $image->hashName());
-        Storage::delete('public/sliding/'.$sliding->foto);
-        $sliding->update([
-            'foto'=>$image->hashName(),
-        ]);
-        return redirect(route('sliding.index'))->with('success', 'Sliding Image berhasil di Ubah!');
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $image->storeAs('public/sliding', $image->hashName());
+            Storage::delete('public/sliding/'.$sliding->foto);
+            $sliding->update([
+                'foto'=>$image->hashName(),
+            ]);
+            return redirect(route('sliding.index'))->with('success', 'Sliding Image berhasil di Ubah!');
+        }
     }
 
     /**
@@ -81,6 +83,8 @@ class SlidingController extends Controller
      */
     public function destroy(Sliding $sliding)
     {
-        //
+        Storage::delete('public/sliding/'.$sliding->foto);
+        $sliding->delete();
+        return redirect(route('sliding.index'))->with('success', 'Sliding Image berhasil di Hapus!');
     }
 }
