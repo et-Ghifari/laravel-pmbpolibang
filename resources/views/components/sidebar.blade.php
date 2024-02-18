@@ -117,7 +117,7 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('fasilitas') ? 'active' : '' }}">
-                    <a href="{{ route ('fasilitas') }}">
+                    <a href="{{ route ('fasilitas.index') }}">
                         <i class="material-icons">place</i>
                         <span>Fasilitas</span>
                     </a>

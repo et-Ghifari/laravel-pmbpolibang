@@ -12,7 +12,8 @@ class FasilitasController extends Controller
      */
     public function index()
     {
-        //
+        $fasilitas = Fasilitas::paginate();
+        return view('apps.fasilitas.index', compact('fasilitas'));
     }
 
     /**
@@ -20,7 +21,7 @@ class FasilitasController extends Controller
      */
     public function create()
     {
-        //
+        return view('apps.fasilitas.add-fasilitas');
     }
 
     /**

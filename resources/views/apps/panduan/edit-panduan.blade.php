@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Sliding')
+@section('title', 'Panduan')
 @section('content')
     <div class="container-fluid">
         <div class="block-header">

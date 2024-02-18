@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistrantController;
 use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\SlidingController;
 use App\Http\Controllers\PanduanController;
+use App\Http\Controllers\FasilitasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,28 +71,16 @@ Route::middleware(['auth', 'verified'])->group(function(){
         //return abort(503);
         return view('apps.registration.independent', ['type_menu' => '']);
     })->name('independent')->middleware('can:user');
-    Route::get('ass-registration', function () {
-        //return abort(503);
-        return view('apps.registration.ass-registration', ['type_menu' => '']);
-    })->name('ass-registration')->middleware('can:user');
 
     Route::get('payment', function () {
         //return abort(503);
         return view('apps.payment', ['type_menu' => '']);
     })->name('payment')->middleware('can:user');
 
-    Route::get('sliding', function () {
-        //return abort(503);
-        return view('apps.sliding-image.index', ['type_menu' => 'interface']);
-    })->name('sliding')->middleware('can:admin');
     Route::get('visi', function () {
         //return abort(503);
         return view('apps.visi-misi.index', ['type_menu' => 'interface']);
     })->name('visi')->middleware('can:admin');
-    Route::get('panduan', function () {
-        //return abort(503);
-        return view('apps.panduan.index', ['type_menu' => 'interface']);
-    })->name('panduan')->middleware('can:admin');
     Route::get('beasiswa', function () {
         //return abort(503);
         return view('apps.beasiswa.index', ['type_menu' => 'interface']);
@@ -104,10 +93,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
         //return abort(503);
         return view('apps.biaya.index', ['type_menu' => 'interface']);
     })->name('biaya')->middleware('can:admin');
-    Route::get('fasilitas', function () {
-        //return abort(503);
-        return view('apps.fasilitas.index', ['type_menu' => 'interface']);
-    })->name('fasilitas')->middleware('can:admin');
     Route::get('testimoni', function () {
         //return abort(503);
         return view('apps.testimoni.index', ['type_menu' => 'interface']);
@@ -121,6 +106,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('user', UserController::class)->middleware('can:super');
     Route::resource('sliding', SlidingController::class)->middleware('can:admin');
     Route::resource('panduan', PanduanController::class)->middleware('can:admin');
+    Route::resource('fasilitas', FasilitasController::class)->middleware('can:admin');
     Route::resource('registrant', RegistrantController::class);
     Route::resource('confirmation', ConfirmationController::class);
 });
