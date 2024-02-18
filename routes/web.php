@@ -35,11 +35,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
         return view('apps.profile', ['type_menu' => '']);
     })->name('profile')->middleware('can:all');
 
-    Route::get('user', function () {
-        //return abort(503);
-        return view('apps.user.index', ['type_menu' => '']);
-    })->name('user')->middleware('can:super');
-
     Route::get('registrant', function () {
         //return abort(503);
         return view('apps.registrant.index', ['type_menu' => '']);
@@ -49,11 +44,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
         //return abort(503);
         return view('apps.previous.index', ['type_menu' => '']);
     })->name('previous')->middleware('can:admin');
-
-    Route::get('confirmation', function () {
-        //return abort(503);
-        return view('apps.confirmation.index', ['type_menu' => '']);
-    })->name('confirmation')->middleware('can:admin');
 
     Route::get('registration', function () {
         //return abort(503);
