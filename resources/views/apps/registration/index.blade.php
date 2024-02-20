@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-sm-3 col-md-4">
                                 <div class="button-demo">
-                                    <img src="https://pmb.polibang.ac.id/form/../assets/images/mandiri.png" width="30%">
+                                    <img src="{{ asset ('assets/images/mandiri.png') }}" width="30%">
                                     <div class="caption">
                                         <h3>Mandiri</h3>
                                         <p>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-sm-3 col-md-4">
                                 <div class="button-demo">
-                                    <img src="https://pmb.polibang.ac.id/form/../assets/images/beasiswa.png" width="30%">
+                                    <img src="{{ asset ('assets/images/beasiswa.png') }}" width="30%">
                                     <div class="caption">
                                         <h3>Beasiswa</h3>
                                         <p>
