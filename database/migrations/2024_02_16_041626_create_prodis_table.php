@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('prodis', function (Blueprint $table) {
             $table->id();
             $table->string('judul', 128);
+            $table->string('nama', 128);
             $table->text('keterangan');
             $table->text('hastag');
             $table->string('foto', 128);

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Testimoni')
+@section('title', 'Prodi')
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
@@ -26,6 +26,12 @@
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input type="text" class="form-control" name="judul" placeholder="judul" required autocomplete="off" required/>
+                                        </div>
+                                    </div>
+                                    <label>Nama</label>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="nama" placeholder="nama" required autocomplete="off" required/>
                                         </div>
                                     </div>
                                     <label>Keterangan</label>

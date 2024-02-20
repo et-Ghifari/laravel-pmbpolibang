@@ -39,6 +39,7 @@ class ProdiController extends Controller
         Prodi::create([
             'foto'=>$image->hashName(),
             'judul'=>$request['judul'],
+            'nama'=>$request['nama'],
             'keterangan'=>$request['keterangan'],
             'hastag'=>$request['hastag'],
             'isi'=>$request['isi'],
@@ -78,6 +79,7 @@ class ProdiController extends Controller
             $prodi->update([
                 'foto'=>$image->hashName(),
                 'judul'=>$request['judul'],
+                'nama'=>$request['nama'],
                 'keterangan'=>$request['keterangan'],
                 'hastag'=>$request['hastag'],
                 'isi'=>$request['isi'],

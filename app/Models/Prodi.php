@@ -10,6 +10,7 @@ class Prodi extends Model
     use HasFactory;
     protected $fillable = [
         'judul',
+        'nama',
         'keterangan',
         'hastag',
         'foto',

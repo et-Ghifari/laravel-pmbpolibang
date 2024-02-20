@@ -15,7 +15,7 @@
                     <div class="header">
                         <div class="row clearfix">
                             <div class="col-xs-12 col-sm-6">
-                                <h2>DManajemen Menu Prodi</h2>
+                                <h2>Manajemen Menu Prodi</h2>
                             </div>
                             <div class="col-xs-12 col-sm-6 align-right">
                                 <div class="switch panel-switch-btn">
@@ -36,6 +36,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <img class="img-responsive thumbnail" src="{{ asset ('storage/prodi/'.$prodi->foto) }}" height="150px" width="300px">
                                 <h4>{{ $prodi->judul }}</h4>
+                                <h6>{{ $prodi->nama }}</h6>
                                 <p>{{ $prodi->keterangan }}</p>
                                 <p>{{ $prodi->hastag }}</p>
                                 <br>
