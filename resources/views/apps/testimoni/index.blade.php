@@ -38,7 +38,7 @@
                                 <h4>{{ $testimoni->nama }}</h4>
                                 <span>{{ $testimoni->jabatan }}</span>
                                 <br></br>
-                                <p>{{ $testimoni->isi }}</p>
+                                {!! $testimoni->isi !!}
                                 <a href="{{ route ('testimoni.edit', $testimoni->id) }}" class="btn bg-cyan waves-effect"><i class="material-icons">edit</i></a>
                                 <form action="{{ route ('testimoni.destroy', $testimoni->id) }}" method="POST">
                                     @csrf

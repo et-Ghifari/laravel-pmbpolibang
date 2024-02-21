@@ -36,6 +36,8 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <h4>{{ $beasiswa->judul }}</h4>
                                 <br>
+                                <h6>{{ $beasiswa->ikon }}</h6>
+                                <br>
                                 {!! $beasiswa->isi !!}
                                 <a href="{{ route ('beasiswa.edit', $beasiswa->id) }}" class="btn bg-cyan waves-effect"><i class="material-icons">edit</i></a>
                                 <form action="{{ route ('beasiswa.destroy', $beasiswa->id) }}" method="POST">

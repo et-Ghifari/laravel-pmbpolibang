@@ -21,6 +21,12 @@
                                 <input type="text" class="form-control" name="judul" placeholder="judul" autocomplete="off" value="{{ $beasiswa->judul }}" required/>
                             </div>
                         </div>
+                        <label>Ikon</label>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="ikon" placeholder="ikon" autocomplete="off" value="{{ $beasiswa->ikon }}" required/>
+                            </div>
+                        </div>
                         <label>Isi</label>
                         <textarea id="ckeditor" name="isi" type="text" required>
                             {{ $beasiswa->isi }}

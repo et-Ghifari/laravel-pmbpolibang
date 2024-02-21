@@ -37,7 +37,7 @@
                                 <img class="img-responsive thumbnail" src="{{ asset ('storage/visi/'.$visi->foto) }}" height="150px" width="300px">
                                 <p>{{ $visi->hastag }}</p>
                                 <br>
-                                <p>{{ $visi->isi }}</p>
+                                {!! $visi->isi !!}
                                 <a href="{{ route ('visi.edit', $visi->id) }}" class="btn bg-cyan waves-effect"><i class="material-icons">edit</i></a>
                                 <form action="{{ route ('visi.destroy', $visi->id) }}" method="POST">
                                     @csrf

@@ -36,11 +36,9 @@
                                         </div>
                                     </div>
                                     <label>Isi</label>
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <textarea rows="4" type="text" class="form-control no-resize" name="isi" placeholder="isi" required autocomplete="off" required>{{ $testimoni->isi }}</textarea>
-                                        </div>
-                                    </div>
+                                    <textarea id="ckeditor" name="isi" type="text" required>
+                                        {{ $testimoni->isi }}
+                                    </textarea>
                                 </div>
                             </div>
                             <div class="form-group align-center">
@@ -58,9 +56,14 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="{{ asset ('plugins/jquery-validation/jquery.validate.js') }}"></script>
-    <script src="{{ asset ('js/pages/forms/form-validation.js') }}"></script>
-    <script src="{{ asset ('js/pages/tables/jquery-datatable.js') }}"></script>
-    <script src="{{ asset ('pages/forms/basic-form-elements.js') }}"></script>
-    <script src="{{ asset ('js/display.js') }}"></script>
+<script src="{{ asset ('plugins/jquery-validation/jquery.validate.js') }}"></script>
+<script src="{{ asset ('js/pages/forms/form-validation.js') }}"></script>
+<script src="{{ asset ('pages/forms/basic-form-elements.js') }}"></script>
+
+<script src="{{ asset ('js/display.js') }}"></script>
+
+<script src="{{ asset ('plugins/jquery-validation/jquery.validate.js') }}"></script>
+<script src="{{ asset ('js/pages/forms/form-validation.js') }}"></script>
+<script src="{{ asset ('plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset ('js/pages/forms/editors.js') }}"></script>
 @endpush

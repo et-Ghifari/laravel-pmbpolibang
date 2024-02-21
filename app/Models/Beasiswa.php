@@ -10,6 +10,7 @@ class Beasiswa extends Model
     use HasFactory;
     protected $fillable = [
         'judul',
+        'ikon',
         'isi',
     ];
 }

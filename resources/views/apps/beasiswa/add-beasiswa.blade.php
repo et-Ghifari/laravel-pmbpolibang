@@ -20,6 +20,12 @@
                                 <input type="text" class="form-control" name="judul" placeholder="judul" required autocomplete="off" required/>
                             </div>
                         </div>
+                        <label>Ikon</label>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="ikon" placeholder="ikon" required autocomplete="off" required/>
+                            </div>
+                        </div>
                         <label>Isi</label>
                         <textarea id="ckeditor" name="isi" type="text" required>
 

@@ -104,24 +104,17 @@
                     <h2>Visi dan Misi</h2><br>
                 </div>
                 <div class="row">
+                    @foreach ($visis as $visi)
                     <div class="col-lg-6" data-aos="fade-right">
-                        <img src="{{ asset('images/visi/about.png') }}" class="img-fluid">
+                        <img src="{{ asset ('storage/visi/'.$visi->foto) }}" class="img-fluid">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
                         <h3>Visi</h3>
-                        <p class="font-italic">Menjadi Politeknik yang Berdaya Saing Global, Professional dan beraqidah
-                            Ahlus Sunnah Wal Jama’ah.</p>
+                        <p class="font-italic">{{ $visi->hastag }}</p>
                         <h3>Misi</h3>
-                        <ol>
-                            <li>Menyelenggarakan dan mengembangkan pendidikan yang mampu berdaya saing dalam era
-                                globalisasi;</li>
-                            <li>Menyelenggarakan pendidikan yang profesional sesuai dengan prinsip <i>Good University
-                                    Governance</i>;</li>
-                            <li>Membangun komunitas yang ikhlas, toleransi, moderat dan religi dalam menjaga Negara
-                                Kesatuan Republik Indonesia;</li>
-                            <li>Melaksanakan tri dharma peguruan tinggi. </li>
-                        </ol>
+                        {!! $visi->isi !!}
                     </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -133,23 +126,17 @@
                     <p>Pendaftaran mahasiswa baru Politeknik Balekambang Jepara dapat melihat jadwal dan alur
                         pendaftaran berikut:</p>
                 </div>
+                @foreach ($panduans as $panduan)
                 <div class="row">
                     <div class="col-md-12 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <img src="{{ asset('images/panduan/waktu pendaftaran.png') }}" class="img-fluid"
+                            <img src="{{ asset ('storage/panduan/'.$panduan->foto) }}" class="img-fluid"
                                 alt="">
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <img src="{{ asset('images/panduan/panduan pendaftaran.png') }}" class="img-fluid"
-                                alt="">
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
         <!-- ======= Beasiswa ======= -->
@@ -164,85 +151,18 @@
                         </b>
                     </p>
                 </div>
+                @foreach ($beasiswas as $beasiswa)
                 <div class="row no-gutters">
                     <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
                         <div class="count-box">
-                            <i class="icofont-book"></i>
+                            <i class="icofont-{{ $beasiswa->ikon }}"></i>
                             <span>
-                                <h4>Beasiswa Tahfidz (Hafal Al-Qur'an)</h4>
+                                <h4>{{ $beasiswa->judul }}</h4>
                             </span>
-                            <p>Bagi kalian yang Hafal Al-Qur'an<br></br>
-                                <strong>10 Juz GRATIS 2 SEMESTER</strong><br>
-                                <strong>15 Juz GRATIS 4 SEMESTER</strong><br>
-                                <strong>20 Juz GRATIS 6 SEMESTER</strong><br>
-                                <strong>30 Juz GRATIS 8 SEMESTER</strong><br></br>
-                                (dibuktikan dengan test hafalan)
-                            </p>
+                            {!! $beasiswa->isi !!}
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class="icofont-read-book"></i>
-                            <span>
-                                <h4>Beasiswa Baca Kitab Kuning</h4>
-                            </span>
-                            <p>Bagi kalian yang mampu Membaca dan Memahami isi kandung <strong>KITAB FATHUL MU`IN GRATIS
-                                    8 SEMESTER</strong><br></br>
-                                (dibuktikan dengan test membaca kitab kuning)</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class="icofont-brainstorming"></i>
-                            <span>
-                                <h4>Beasiswa Prestasi Akademik</h4>
-                            </span>
-                            <p>Bagi kalian yang memiliki Prestasi Akademik pada tingkat berikut :<br></br>
-                                <strong>KABUPATEN GRATIS 1 SEMESTER</strong><br>
-                                <strong>PROVINSI GRATIS 2 SEMESTER</strong><br>
-                                <strong>NASIONAL GRATIS 4 SEMESTER</strong><br></br>
-                                (dibuktikan dengan piagam kejuaraan asli)
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class="icofont-medal"></i>
-                            <span>
-                                <h4>Beasiswa Prestasi Non Akademik</h4>
-                            </span>
-                            <p>Bagi kalian yang memiliki Prestasi Non Akademik pada tingkat berikut :<br></br>
-                                <strong>KABUPATEN GRATIS 1 SEMESTER</strong><br>
-                                <strong>PROVINSI GRATIS 2 SEMESTER</strong><br>
-                                <strong>NASIONAL GRATIS 4 SEMESTER</strong><br></br>
-                                (dibuktikan dengan piagam kejuaraan asli)
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class="icofont-certificate-alt-1"></i>
-                            <span>
-                                <h4>Beasiswa Prestasi Kelas</h4>
-                            </span>
-                            <p>Bagi kalian yang memiliki Rangking Pararel<br></br>
-                                <strong>RANGKING 1 GRATIS 4 SEMESTER</strong><br>
-                                <strong>RANGKING 2 GRATIS 2 SEMESTER</strong><br>
-                                <strong>RANGKING 3 GRATIS 1 SEMESTER</strong><br></br>
-                                (dibuktikan dengan Raport Asli & Surat Keterangan dari sekolah)
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <i class="icofont-graduate-alt"></i>
-                            <span>
-                                <h4>Alumni Balekambang</h4>
-                            </span>
-                            <p>Bagi alumni Balekambang yang memiliki <strong>RANGKING 1/2/3 PARAREL GRATIS 8
-                                    SEMESTER</strong> selain kategori diatas <strong>GRATIS 1 SEMESTER</strong></p>
-                        </div>
-                    </div>
+                @endforeach
                 </div>
             </div>
         </section>
@@ -264,64 +184,62 @@
                 <div class="row" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <ul class="nav nav-tabs flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active show" data-toggle="tab" href="#tab-1">
-                                    <h4>D4 Rekayasa Perangkat Lunak</h4>
-                                    <p>Lulusan Prodi RPL merupakan Sarjana Terapan Komputer (S.Tr.Kom.)</p>
-                                </a>
-                            </li>
-                            <li class="nav-item mt-2">
-                                <a class="nav-link" data-toggle="tab" href="#tab-2">
-                                    <h4>D4 Administrasi Bisnis Internasional</h4>
-                                    <p>Lulusan Prodi ABI merupakan Sarjana Terapan Administrasi Bisnis (S.Tr.A.B.)</p>
-                                </a>
-                            </li>
-                            <li class="nav-item mt-2">
-                                <a class="nav-link" data-toggle="tab" href="#tab-3">
-                                    <h4>D4 Akuntansi Keuangan Publik</h4>
-                                    <p>Lulusan Prodi AKP merupakan Sarjana Terapan Akuntansi (S.Tr.Ak.)</p>
-                                </a>
-                            </li>
+                            @foreach ($prodis as $prodi)
+                                @if ($prodi->judul=='Rekayasa Perangkat Lunak')
+                                <li class="nav-item">
+                                    <a class="nav-link active show" data-toggle="tab" href="#tab-1">
+                                        <h4>{{ $prodi->nama }}</h4>
+                                        <p>{{ $prodi->keterangan }}</p>
+                                    </a>
+                                </li>
+                                @endif
+                                @if ($prodi->judul=='Administrasi Bisnis Internasional')
+                                <li class="nav-item mt-2">
+                                    <a class="nav-link" data-toggle="tab" href="#tab-2">
+                                        <h4>{{ $prodi->nama }}</h4>
+                                        <p>{{ $prodi->keterangan }}</p>
+                                    </a>
+                                </li>
+                                @endif
+                                @if ($prodi->judul=='Akuntansi Keuangan Publik')
+                                <li class="nav-item mt-2">
+                                    <a class="nav-link" data-toggle="tab" href="#tab-3">
+                                        <h4>{{ $prodi->nama }}</h4>
+                                        <p>{{ $prodi->keterangan }}</p>
+                                    </a>
+                                </li>
+                                @endif
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-lg-8">
                         <div class="tab-content">
-                            <div class="tab-pane active show" id="tab-1">
-                                <h3>Rekayasa Perangkat Lunak</h3>
-                                <p class="font-italic">Menjadi Program Studi Vokasi dibidang Rekayasa Perangkat Lunak
-                                    yang Berdaya Saing Global, Profesional, Religius dan berjiwa Technopreunership</p>
-                                <img src="{{ asset('images/prodi/rpl.jpg') }}" alt="" class="img-fluid">
-                                <p>RPL merupakan domain Bidang Ilmu Informatika & Komputer dalam aspek pengembangan
-                                    software mulai dari tahap awal spesifikasi, desain, konstruksi, testing sampai
-                                    pemeliharaan</p>
-                                <p>Profesi-profesi lulusan RPL antara lain Programmer, System Analyst, Software Quality
-                                    Assurance Engineer (SQAE), Database Administrator, Software Architect, Software
-                                    Support, Konsultan IT, Web Designer.</p>
-                            </div>
-                            <div class="tab-pane" id="tab-2">
-                                <h3>Administrasi Bisnis Internasional</h3>
-                                <p class="font-italic">Menjadi program studi vokasi bidang Administrasi bisnis
-                                    internasional yang berdaya saing global, profesional, dan religius berdasar aqidah
-                                    Ahlus Sunnah Wal Jama’ah</p>
-                                <img src="{{ asset('images/prodi/administrasi.jpg') }}" alt=""
-                                    class="img-fluid">
-                                <p>Merupakan program studi yang fokus pada tantangan yang dihadapi oleh dunia bisnis di
-                                    pasar internasional. Mahasiswa akan mempelajari etika dan hukum bisnis dalam skala
-                                    internasional</p>
-                                <p>Selain itu, akan dilatih untuk berpikir secara global dalam menciptakan ide dan
-                                    solusi dalam permasalahan ekonomi dan bisnis di lingkup internasional</p>
-                            </div>
-                            <div class="tab-pane" id="tab-3">
-                                <h3>Akuntansi Keuangan Publik</h3>
-                                <p class="font-italic">Menjadi rujukan pendidikan vokasi bidang Akuntansi Keuangan
-                                    Publik yang unggul berdasar aqidah Ahlus Sunnah Wal Jama’ah</p>
-                                <img src="{{ asset('images/prodi/akuntansi.jpg') }}" alt=""
-                                    class="img-fluid">
-                                <p>Program Studi Akuntansi Keuangan Publik Mengajarkan ilmu akuntansi dalam ruang
-                                    lingkup organisasi sektor publik</p>
-                                <p>Sektor publik tersebut antara lain seperti organisasi pemerintahan pusat dan daerah,
-                                    Lembaga Swadaya Masyarakat (LSM), Rumah Sakit, dan Pendidikan</p>
-                            </div>
+                            @foreach ($prodis as $prodi)
+                                @if ($prodi->judul=='Rekayasa Perangkat Lunak')
+                                <div class="tab-pane active show" id="tab-1">
+                                    <h3>R{{ $prodi->judul }}</h3>
+                                    <p class="font-italic">{{ $prodi->hastag }}</p>
+                                    <img src="{{ asset ('storage/prodi/'.$prodi->foto) }}" alt="" class="img-fluid">
+                                    {!! $prodi->isi !!}
+                                </div>
+                                @endif
+                                @if ($prodi->judul=='Administrasi Bisnis Internasional')
+                                <div class="tab-pane active show" id="tab-2">
+                                    <h3>R{{ $prodi->judul }}</h3>
+                                    <p class="font-italic">{{ $prodi->hastag }}</p>
+                                    <img src="{{ asset ('storage/prodi/'.$prodi->foto) }}" alt="" class="img-fluid">
+                                    {!! $prodi->isi !!}
+                                </div>
+                                @endif
+                                @if ($prodi->judul=='Administrasi Bisnis Internasional')
+                                <div class="tab-pane active show" id="tab-3">
+                                    <h3>R{{ $prodi->judul }}</h3>
+                                    <p class="font-italic">{{ $prodi->hastag }}</p>
+                                    <img src="{{ asset ('storage/prodi/'.$prodi->foto) }}" alt="" class="img-fluid">
+                                    {!! $prodi->isi !!}
+                                </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -336,63 +254,27 @@
                     </p>
                 </div>
                 <div class="row">
+                    @foreach ($biayas as $biaya)
                     <div class="col-lg-4 col-md-6">
                         <div class="box featured" data-aos="fade-up" data-aos-delay="100">
-                            <h3>Kelas Reguler</h3>
-                            <h4><sup>Rp. </sup>4.675.000</h4>
+                            <h3>{{ $biaya->judul }}</h3>
+                            <h4><sup>Rp. </sup>{{ $biaya->total }}</h4>
                             <ul>
-                                <li>Sumbangan Pengembangan Institusi<br>(Rp. 1.500.000)</li>
-                                <li>Biaya Perkuliahan/Semester<br>(Rp. 2.500.000)</li>
-                                <li>Jas Almamater<br>(Rp. 200.000)</li>
-                                <li>Pekan Orientasi Studi Mahasiswa<br>(Rp. 350.000)</li>
-                                <li>Sarung Batik Polibang<br>(Rp. 125.000)</li>
-                                <li class="na">Biaya Operasional/Bulan<br>(Rp. 650.000)</li>
-                                <li class="na">Almari (Hak Pakai Selama di Pondok)<br>(Rp. 600.000)</li>
-                                <li class="na">Loundry/Bulan<br>(Rp. 70.000)</li>
+                                <li>Sumbangan Pengembangan Institusi<br>(Rp. {{ $biaya->sumbangan }})</li>
+                                <li>Biaya Perkuliahan/Semester<br>(Rp. {{ $biaya->semester }})</li>
+                                <li>Jas Almamater<br>(Rp. {{ $biaya->jas }})</li>
+                                <li>Pekan Orientasi Studi Mahasiswa<br>(Rp. {{ $biaya->posma }})</li>
+                                <li>Sarung Batik Polibang<br>(Rp. {{ $biaya->sarung }})</li>
+                                <li class="{{ $biaya->class }}">Biaya Operasional/Bulan<br>(Rp. {{ $biaya->bulanan }})</li>
+                                <li class="{{ $biaya->class }}">Almari (Hak Pakai Selama di Pondok)<br>(Rp. {{ $biaya->almari }})</li>
+                                <li class="{{ $biaya->class }}">Loundry/Bulan<br>(Rp. {{ $biaya->loundry }})</li>
                             </ul>
                             <div class="btn-wrap">
                                 <a href="https://pmb.polibang.ac.id/proof" class="btn-buy">Registrasi</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="box featured" data-aos="fade-up" data-aos-delay="200">
-                            <h3>Kelas Karyawan</h3>
-                            <h4><sup>Rp. </sup>5.175.000</h4>
-                            <ul>
-                                <li>Sumbangan Pengembangan Institusi<br>(Rp. 1.500.000)</li>
-                                <li>Biaya Perkuliahan/Semester<br>(Rp. 3.000.000)</li>
-                                <li>Jas Almamater<br>(Rp. 200.000)</li>
-                                <li>Pekan Orientasi Studi Mahasiswa<br>(Rp. 350.000)</li>
-                                <li>Sarung Batik Polibang<br>(Rp. 125.000)</li>
-                                <li class="na">Biaya Operasional/Bulan<br>(Rp. 650.000)</li>
-                                <li class="na">Almari (Hak Pakai Selama di Pondok)<br>(Rp. 600.000)</li>
-                                <li class="na">Loundry/Bulan<br>(Rp. 70.000)</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="https://pmb.polibang.ac.id/proof" class="btn-buy">Registrasi</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="box featured" data-aos="fade-up" data-aos-delay="300">
-                            <h3>Kelas Reguler + Mondok</h3>
-                            <h4><sup>Rp. </sup>5.995.000</h4>
-                            <ul>
-                                <li>Sumbangan Pengembangan Institusi<br>(Rp. 1.500.000)</li>
-                                <li>Biaya Perkuliahan/Semester<br>(Rp. 2.500.000)</li>
-                                <li>Jas Almamater<br>(Rp. 200.000)</li>
-                                <li>Pekan Orientasi Studi Mahasiswa<br>(Rp. 350.000)</li>
-                                <li>Sarung Batik Polibang<br>(Rp. 125.000)</li>
-                                <li>Biaya Operasional/Bulan<br>(Rp. 650.000)</li>
-                                <li>Almari (Hak Pakai Selama di Pondok)<br>(Rp. 600.000)</li>
-                                <li>Loundry/Bulan<br>(Rp. 70.000)</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="https://pmb.polibang.ac.id/proof" class="btn-buy">Registrasi</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -413,105 +295,19 @@
                     <p>Fasilitas-faslitas pendukung Pembelajaran di Politeknik Balakembang Jepara</p>
                 </div>
                 <div class="row">
+                    @foreach ($facilities as $facility)
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="member" data-aos="fade-up" data-aos-delay="100">
                             <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/gedung.jpg') }}" class="img-fluid">
+                                <img src="{{ asset ('storage/fasilitas/'.$facility->foto) }}" class="img-fluid">
                             </div>
                             <div class="member-info">
-                                <h4>Gedung Utama</h4>
-                                <span>Gedung Pembelajaran</span>
+                                <h4>{{ $facility->judul }}</h4>
+                                <span>{{ $facility->keterangan }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="200">
-                            <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/aula.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="member-info">
-                                <h4>Aula</h4>
-                                <span>Gedung Serba Guna</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="300">
-                            <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/bisnis.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="member-info">
-                                <h4>Unit Bisnis</h4>
-                                <span>Gedung Bisnis</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="400">
-                            <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/lab1.png') }}" class="img-fluid">
-                            </div>
-                            <div class="member-info">
-                                <h4>Lab Programmer</h4>
-                                <span>Laboratorium Komputer Rekayasa Perangkat Lunak</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="500">
-                            <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/lab2.jpeg') }}" class="img-fluid">
-                            </div>
-                            <div class="member-info">
-                                <h4>Lab Bisnis</h4>
-                                <span>Laboratorium Komputer Administrasi Bisnis Internasional</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="600">
-                            <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/homestay.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="member-info">
-                                <h4>Homestay</h4>
-                                <span>Tempat Penginapan</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="600">
-                            <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/kelas.jpeg') }}" class="img-fluid">
-                            </div>
-                            <div class="member-info">
-                                <h4>Ruang Perkuliahan</h4>
-                                <span>Ruangan Belajar Mengajar</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="600">
-                            <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/image.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="member-info">
-                                <h4>Ruang Perpustakaan</h4>
-                                <span>Anesthesiologist</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="600">
-                            <div class="member-img">
-                                <img src="{{ asset('images/fasilitas/image.jpg') }}" class="img-fluid">
-                            </div>
-                            <div class="member-info">
-                                <h4>.....</h4>
-                                <span>Anesthesiologist</span>
-                            </div>
-                        </div>
-                    </div> -->
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -525,29 +321,17 @@
                         Jepara</p>
                 </div>
                 <div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-delay="100">
+                    @foreach ($testimonis as $testimoni)
                     <div class="testimonial-item">
                         <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                            Politeknik Balekambang Jepara adalah salah satu tempat yang terbaik di Indonesia untuk
-                            mengembangkan Kompetensi dan Karakter.<br>
-                            Saya Berharap mahasiswa politeknik menjadi orang-orang sukses, baik dan kompeten.
+                            {!! $testimoni->isi !!}
                             <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                         </p>
-                        <img src="{{ asset('images/testimonials/wikan.jpg') }}" class="testimonial-img">
-                        <h3>Wikan Sakarinto, ST.,M.Sc.,Ph.D.,</h3>
-                        <h4>Direktur Jendral Pendidikan Vokasi</h4>
+                        <img src="{{ asset ('storage/testimoni/'.$testimoni->foto) }}" class="testimonial-img">
+                        <h3>{{ $testimoni->nama }}</h3>
+                        <h4>{{ $testimoni->jabatan }}</h4>
                     </div>
-                    <div class="testimonial-item">
-                        <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                            Pendidikan Politeknik Balekambang Jepara merupakan program pemerintah untuk menciptakan SDM
-                            yang memiliki keahlian baik. <br>
-                            Disini anda bisa belajar agama dan juga pendidikan keahlian. Mari kuliah di Politeknik
-                            Balekambang Jepara.
-                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                        </p>
-                        <img src="{{ asset('images/testimonials/andang.jpg') }}" class="testimonial-img"">
-                        <h3>Andang Wahyu Triyanto,SE.,MM.,</h3>
-                        <h4>Anggota DPRD Provinsi Jawa Tengah</h4>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

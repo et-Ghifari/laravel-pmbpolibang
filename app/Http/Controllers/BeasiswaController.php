@@ -31,6 +31,7 @@ class BeasiswaController extends Controller
     {
         Beasiswa::create([
             'judul'=>$request['judul'],
+            'ikon'=>$request['ikon'],
             'isi'=>$request['isi'],
         ]);
 
@@ -60,6 +61,7 @@ class BeasiswaController extends Controller
     {
         $beasiswa->update([
             'judul'=>$request['judul'],
+            'ikon'=>$request['ikon'],
             'isi'=>$request['isi'],
         ]);
         return redirect(route('beasiswa.index'))->with('success', 'Menu Beasiswa berhasil di Ubah!');
@@ -71,6 +73,6 @@ class BeasiswaController extends Controller
     public function destroy(Beasiswa $beasiswa)
     {
         $beasiswa->delete();
-        return redirect(route('prodi.index'))->with('success', 'Menu Prodi berhasil di Hapus!');
+        return redirect(route('beasiswa.index'))->with('success', 'Menu Beasiswa berhasil di Hapus!');
     }
 }
