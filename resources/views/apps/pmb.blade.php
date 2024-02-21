@@ -67,13 +67,22 @@
         </div>
     </header><!-- End Header -->
     <!-- ======= Hero Section ======= -->
+
     <section id="hero">
         <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
             <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active" style="background-image: url(images/slide/slide-1.jpg)"></div>
-                <div class="carousel-item" style="background-image: url(images/slide/slide-2.jpg)"></div>
-                <div class="carousel-item" style="background-image: url(images/slide/slide-3.png)"></div>
+                @foreach ($slidings as $sliding)
+                @if ($sliding->id==1)
+                    <div class="carousel-item active" style="background-image: url({{ asset ('storage/sliding/'.$sliding->foto) }})"></div>
+                @endif
+                @if ($sliding->id==2)
+                    <div class="carousel-item" style="background-image: url({{ asset ('storage/sliding/'.$sliding->foto) }})"></div>
+                @endif
+                @if ($sliding->id==3)
+                    <div class="carousel-item" style="background-image: url({{ asset ('storage/sliding/'.$sliding->foto) }})"></div>
+                @endif
+                @endforeach
             </div>
         </div>
         <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
@@ -86,6 +95,7 @@
         </a>
         </div>
     </section><!-- End Hero -->
+
     <main id="main">
         <!-- ======= Visi Misi ======= -->
         <section id="visi_misi" class="about">

@@ -14,6 +14,7 @@ use App\Http\Controllers\VisiController;
 use App\Http\Controllers\BeasiswaController;
 use App\Http\Controllers\BiayaController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\PmbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [PmbController::class, 'index'], function () {
     return view('apps.pmb', ['type_menu' => '']);
 });
 
