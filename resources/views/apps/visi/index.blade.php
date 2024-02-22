@@ -17,6 +17,7 @@
                             <div class="col-xs-12 col-sm-6">
                                 <h2>Manajemen Menu Visi Misi</h2>
                             </div>
+                            @if (auth()->user()->role=='superuser')
                             <div class="col-xs-12 col-sm-6 align-right">
                                 <div class="switch panel-switch-btn">
                                     <a href="{{ route ('visi.create') }}" class="btn bg-green waves-effect">
@@ -25,6 +26,7 @@
                                     </a>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="body">
