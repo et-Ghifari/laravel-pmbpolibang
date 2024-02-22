@@ -224,7 +224,7 @@
                                 </div>
                                 @endif
                                 @if ($prodi->judul=='Administrasi Bisnis Internasional')
-                                <div class="tab-pane active" id="tab-2">
+                                <div class="tab-pane" id="tab-2">
                                     <h3>{{ $prodi->judul }}</h3>
                                     <p class="font-italic">{{ $prodi->hastag }}</p>
                                     <img src="{{ asset ('storage/prodi/'.$prodi->foto) }}" alt="" class="img-fluid">
@@ -232,7 +232,7 @@
                                 </div>
                                 @endif
                                 @if ($prodi->judul=='Administrasi Bisnis Internasional')
-                                <div class="tab-pane active" id="tab-3">
+                                <div class="tab-pane" id="tab-3">
                                     <h3>{{ $prodi->judul }}</h3>
                                     <p class="font-italic">{{ $prodi->hastag }}</p>
                                     <img src="{{ asset ('storage/prodi/'.$prodi->foto) }}" alt="" class="img-fluid">
