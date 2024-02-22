@@ -151,8 +151,8 @@
                         </b>
                     </p>
                 </div>
-                @foreach ($beasiswas as $beasiswa)
                 <div class="row no-gutters">
+                    @foreach ($beasiswas as $beasiswa)
                     <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
                         <div class="count-box">
                             <i class="icofont-{{ $beasiswa->ikon }}"></i>
@@ -161,8 +161,8 @@
                             </span>
                             {!! $beasiswa->isi !!}
                         </div>
+                    @endforeach
                     </div>
-                @endforeach
                 </div>
             </div>
         </section>
