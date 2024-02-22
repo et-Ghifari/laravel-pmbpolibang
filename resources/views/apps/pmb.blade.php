@@ -161,8 +161,8 @@
                             </span>
                             {!! $beasiswa->isi !!}
                         </div>
-                    @endforeach
                     </div>
+                    @endforeach
                 </div>
             </div>
         </section>
