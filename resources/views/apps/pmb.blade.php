@@ -323,10 +323,9 @@
                 <div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-delay="100">
                     @foreach ($testimonis as $testimoni)
                     <div class="testimonial-item">
-                        <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                             {!! $testimoni->isi !!}
-                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                        </p>
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                         <img src="{{ asset ('storage/testimoni/'.$testimoni->foto) }}" class="testimonial-img">
                         <h3>{{ $testimoni->nama }}</h3>
                         <h4>{{ $testimoni->jabatan }}</h4>
