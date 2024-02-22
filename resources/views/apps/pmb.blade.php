@@ -217,23 +217,23 @@
                             @foreach ($prodis as $prodi)
                                 @if ($prodi->judul=='Rekayasa Perangkat Lunak')
                                 <div class="tab-pane active show" id="tab-1">
-                                    <h3>R{{ $prodi->judul }}</h3>
+                                    <h3>{{ $prodi->judul }}</h3>
                                     <p class="font-italic">{{ $prodi->hastag }}</p>
                                     <img src="{{ asset ('storage/prodi/'.$prodi->foto) }}" alt="" class="img-fluid">
                                     {!! $prodi->isi !!}
                                 </div>
                                 @endif
                                 @if ($prodi->judul=='Administrasi Bisnis Internasional')
-                                <div class="tab-pane active show" id="tab-2">
-                                    <h3>R{{ $prodi->judul }}</h3>
+                                <div class="tab-pane active" id="tab-2">
+                                    <h3>{{ $prodi->judul }}</h3>
                                     <p class="font-italic">{{ $prodi->hastag }}</p>
                                     <img src="{{ asset ('storage/prodi/'.$prodi->foto) }}" alt="" class="img-fluid">
                                     {!! $prodi->isi !!}
                                 </div>
                                 @endif
                                 @if ($prodi->judul=='Administrasi Bisnis Internasional')
-                                <div class="tab-pane active show" id="tab-3">
-                                    <h3>R{{ $prodi->judul }}</h3>
+                                <div class="tab-pane active" id="tab-3">
+                                    <h3>{{ $prodi->judul }}</h3>
                                     <p class="font-italic">{{ $prodi->hastag }}</p>
                                     <img src="{{ asset ('storage/prodi/'.$prodi->foto) }}" alt="" class="img-fluid">
                                     {!! $prodi->isi !!}
