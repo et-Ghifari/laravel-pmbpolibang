@@ -231,7 +231,7 @@
                                     {!! $prodi->isi !!}
                                 </div>
                                 @endif
-                                @if ($prodi->judul=='Administrasi Bisnis Internasional')
+                                @if ($prodi->judul=='Akuntansi Keuangan Publik')
                                 <div class="tab-pane" id="tab-3">
                                     <h3>{{ $prodi->judul }}</h3>
                                     <p class="font-italic">{{ $prodi->hastag }}</p>
