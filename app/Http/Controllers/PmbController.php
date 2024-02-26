@@ -16,15 +16,14 @@ class PmbController extends Controller
 {
     public function index()
     {
-        return view('apps.pmb', [
-            'slidings'=>Sliding::paginate(),
-            'visis'=>Visi::paginate(),
-            'panduans'=>Panduan::paginate(),
-            'beasiswas'=>Beasiswa::paginate(),
-            'prodis'=>Prodi::paginate(),
-            'biayas'=>Biaya::paginate(),
-            'facilities'=>Facility::paginate(),
-            'testimonis'=>Testimoni::paginate(),
-        ]);
+        $slidings = Sliding::paginate();
+        $visis = Visi::paginate();
+        $panduans = Panduan::paginate();
+        $beasiswas = Beasiswa::paginate();
+        $prodis = Prodi::paginate();
+        $biayas = Biaya::paginate();
+        $facilities = Facility::paginate();
+        $testimonis = Testimoni::paginate();
+        return view('apps.pmb', compact('slidings', 'visis', 'panduans', 'beasiswas', 'prodis', 'biayas', 'facilities', 'testimonis'));
     }
 }
