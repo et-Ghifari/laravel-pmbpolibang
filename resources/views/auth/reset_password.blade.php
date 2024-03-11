@@ -6,7 +6,7 @@
 @section('auth')
     <div class="signup-box">
         <div class="logo">
-            <a href="javascript:void(0);">Reset <b>Password</b></a>
+            <a href="javascript:void(0);">Ganti-<b>Kata Sandi</b></a>
             <small>Admin PMB | POLIBANG</small>
         </div>
         @error('password')

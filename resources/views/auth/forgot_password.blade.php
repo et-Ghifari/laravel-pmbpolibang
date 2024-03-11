@@ -6,7 +6,7 @@
 @section('auth')
     <div class="fp-box">
         <div class="logo">
-            <a href="javascript:void(0);">Lupa-<b>Password</b></a>
+            <a href="javascript:void(0);">Lupa-<b>Kata Sandi</b></a>
             <small>Admin PMB - POLIBANG</small>
         </div>
         @if (session('status'))

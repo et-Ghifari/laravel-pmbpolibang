@@ -13,8 +13,8 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\VisiController;
 use App\Http\Controllers\BeasiswaController;
 use App\Http\Controllers\BiayaController;
-use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PmbController;
+use App\Http\Controllers\AngkatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +47,15 @@ Route::middleware(['auth', 'verified'])->group(function(){
         return view('apps.registrant.index', ['type_menu' => '']);
     })->name('registrant')->middleware('can:admin');
 
+    Route::get('student', function () {
+        //return abort(503);
+        return view('apps.student.index', ['type_menu' => '']);
+    })->name('student')->middleware('can:admin');
+    Route::get('2023', [AngkatanController::class, 'index23'], function () {
+        //return abort(503);
+        return view('apps.student.2023-student', ['type_menu' => '']);
+    })->name('2023')->middleware('can:admin');
+
     Route::get('registration', function () {
         //return abort(503);
         return view('apps.registration.index', ['type_menu' => '']);
@@ -78,7 +87,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('visi', VisiController::class)->middleware('can:admin');
     Route::resource('beasiswa', BeasiswaController::class)->middleware('can:admin');
     Route::resource('biaya', BiayaController::class)->middleware('can:admin');
-    Route::resource('student', StudentController::class)->middleware('can:admin');
     Route::resource('registrant', RegistrantController::class);
     Route::resource('confirmation', ConfirmationController::class);
 });

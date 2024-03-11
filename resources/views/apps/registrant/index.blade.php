@@ -33,7 +33,7 @@
                             <div class="col-lg-12 col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box bg-cyan">
                                     <div class="icon">
-                                        <a href="https://pmb.polibang.ac.id/registrant/../export/totalExport.php"><i class="material-icons">people</i></a>
+                                        <a href=""><i class="material-icons">people</i></a>
                                     </div>
                                     <div class="content">
                                         <div class="text">TOTAL</div>
@@ -44,7 +44,7 @@
                             <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box bg-blue">
                                     <div class="icon">
-                                        <a href="https://pmb.polibang.ac.id/registrant/../export/rplExport.php"><i class="material-icons">code</i></a>
+                                        <a href=""><i class="material-icons">code</i></a>
                                     </div>
                                     <div class="content">
                                         <div class="text">RPL</div>
@@ -55,7 +55,7 @@
                             <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box bg-red">
                                     <div class="icon">
-                                        <a href="https://pmb.polibang.ac.id/registrant/../export/abiExport.php"><i class="material-icons">computer</i></a>
+                                        <a href=""><i class="material-icons">computer</i></a>
                                     </div>
                                     <div class="content">
                                         <div class="text">ABI</div>
@@ -66,7 +66,7 @@
                             <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box bg-green">
                                     <div class="icon">
-                                        <a href="https://pmb.polibang.ac.id/registrant/../export/akpExport.php"><i class="material-icons">monetization_on</i></a>
+                                        <a href=""><i class="material-icons">monetization_on</i></a>
                                     </div>
                                     <div class="content">
                                         <div class="text">AKP</div>

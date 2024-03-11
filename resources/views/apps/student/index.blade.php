@@ -25,40 +25,39 @@
                     </div>
                     <div class="body">
                         <div class="row">
-                            <div class="row clearfix">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    @include('layouts.alert')
+                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box bg-blue">
+                                    <div class="icon">
+                                        <a href="{{ route ('2023') }}"><i class="material-icons">date_range</i></a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">ANGKATAN</div>
+                                        <div class="number">2023</div>
+                                    </div>
                                 </div>
                             </div>
-                        <div class="table">
-                            <table class="table table-bordered table-striped table-hover js-basic-example">
-                                <thead>
-                                    <tr>
-                                        <th class="col-sm-1">ANGKATAN</th>
-                                        <th class="col-sm-1">JALUR</th>
-                                        <th class="col-sm-3">NAMA LENGKAP</th>
-                                        <th class="col-sm-3">ALAMAT EMAIL</th>
-                                        <th class="col-sm-2">No.TELP/WA</th>
-                                        <th class="col-sm-1 align-center"><i class="material-icons">settings</i></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($students as $student)
-                                    <tr>
-                                        <td>{{ $student->angkatan }}</td>
-                                        <td>{{ $student->jalur }}</td>
-                                        <td>{{ $student->nama }}</td>
-                                        <td>{{ $student->email }}</td>
-                                        <td>{{ $student->nohp }}</td>
-                                        <td class="align-center">
-                                            @if (auth()->user()->role == 'superuser' || auth()->user()->role == 'admin')
-                                                <a href="{{ route ('student.edit', $student->id) }}" class="btn bg-cyan waves-effect" data-toggle="tooltip" data-placement="left" title="Review"><i class="material-icons">visibility</i></a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box bg-green">
+                                    <div class="icon">
+                                        <a href=""><i class="material-icons">date_range</i></a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">ANGKATAN</div>
+                                        <div class="number">2022</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box bg-red">
+                                    <div class="icon">
+                                        <a href=""><i class="material-icons">date_range</i></a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">ANGKATA</div>
+                                        <div class="number">2021</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

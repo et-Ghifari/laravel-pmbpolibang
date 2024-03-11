@@ -6,7 +6,7 @@
 @section('auth')
     <div class="fp-box">
         <div class="logo">
-            <a href="javascript:void(0);">Notifikasi <b>Email</b></a>
+            <a href="javascript:void(0);">Notifikasi-<b>Email Lupa Kata Sandi</b></a>
             <small>Admin PMB | POLIBANG</small>
         </div>
         <div class="card">

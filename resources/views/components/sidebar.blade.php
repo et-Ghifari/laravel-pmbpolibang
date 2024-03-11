@@ -52,7 +52,7 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('student') ? 'active' : '' }}">
-                    <a href="{{ route ('student.index') }}">
+                    <a href="{{ route ('student') }}">
                         <i class="material-icons">folder_shared</i>
                         <span>Pendaftar Terdahulu</span>
                     </a>

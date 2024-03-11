@@ -6,7 +6,7 @@
 @section('auth')
     <div class="fp-box">
         <div class="logo">
-            <a href="javascript:void(0);">Verification <b>Email</b></a>
+            <a href="javascript:void(0);">Verification-<b>Email Registrasi</b></a>
             <small>Admin Laravel - Flutter</small>
         </div>
         @if (session('status') == 'verification-link-sent')
