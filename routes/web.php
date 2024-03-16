@@ -55,6 +55,14 @@ Route::middleware(['auth', 'verified'])->group(function(){
         //return abort(503);
         return view('apps.student.2023-student', ['type_menu' => '']);
     })->name('2023')->middleware('can:admin');
+    Route::get('2022', [AngkatanController::class, 'index22'], function () {
+        //return abort(503);
+        return view('apps.student.2022-student', ['type_menu' => '']);
+    })->name('2022')->middleware('can:admin');
+    Route::get('2021', [AngkatanController::class, 'index21'], function () {
+        //return abort(503);
+        return view('apps.student.2021-student', ['type_menu' => '']);
+    })->name('2021')->middleware('can:admin');
 
     Route::get('registration', function () {
         //return abort(503);

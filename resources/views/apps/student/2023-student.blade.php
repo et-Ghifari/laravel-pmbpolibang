@@ -14,7 +14,7 @@
                     <div class="header">
                         <div class="row clearfix">
                             <div class="col-xs-12 col-sm-6">
-                                <h2>Data Mahasiswa</h2>
+                                <h2>Data Mahasiswa 2023</h2>
                             </div>
                             <div class="col-xs-12 col-sm-6 align-right">
                                 <div class="switch panel-switch-btn">

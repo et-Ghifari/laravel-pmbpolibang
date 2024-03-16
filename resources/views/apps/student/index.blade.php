@@ -39,7 +39,7 @@
                             <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box bg-green">
                                     <div class="icon">
-                                        <a href=""><i class="material-icons">date_range</i></a>
+                                        <a href="{{ route ('2022') }}"><i class="material-icons">date_range</i></a>
                                     </div>
                                     <div class="content">
                                         <div class="text">ANGKATAN</div>
@@ -50,7 +50,7 @@
                             <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
                                 <div class="info-box bg-red">
                                     <div class="icon">
-                                        <a href=""><i class="material-icons">date_range</i></a>
+                                        <a href="{{ route ('2021') }}"><i class="material-icons">date_range</i></a>
                                     </div>
                                     <div class="content">
                                         <div class="text">ANGKATA</div>
